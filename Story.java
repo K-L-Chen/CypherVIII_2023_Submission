@@ -24,7 +24,7 @@ public class Story
         System.out.println("(To advance through text press enter to continue)");
         Continue();
         System.out.println("Please enter your difficulty. (Enter 0, 1, or 2) (0 being easiest and 2 being hardest)");
-        int difficulty = in.nextLine();
+        int difficulty = Integer.parseInt(in.nextLine());
         System.out.println("Greetings Student "+ randomnumber);
         System.out.println("Please enter your name");
         String name = in.nextLine();
@@ -77,7 +77,7 @@ public class Story
         System.out.println("*There is not a soul in sight and the sense of dread from hundreds of first time renters permeates the air.*");
         System.out.println("Suddenly a Random Student jumps out at you!");
         Continue();
-        //Normal battle trigger here
+        battler = new Battler(character, createEnemies(3, difficulty), in);
         System.out.println("*With the student defeat you move on to the second floor");
         Continue();
         System.out.println("*The second floor isn't much better, but on the ground you see a student face down on the ground*");
@@ -145,7 +145,7 @@ public class Story
         {}  
     }
 
-    private ArrayList<Enemy> createEnemeies(int enemy_count, int difficulty){
+    private ArrayList<Enemy> createEnemies(int enemy_count, int difficulty){
         ArrayList<Enemy> enemy_list = new ArrayList<Enemy>();
         for(int i=0; i<enemy_count; i++){
             enemy_list.add(new Enemy(difficulty, rand_gen.nextInt()));
