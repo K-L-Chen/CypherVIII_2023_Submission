@@ -13,10 +13,11 @@ public class Battler {
         this.player = player_to_set;
         this.enemy_list = enemy_to_set; 
         this.start_battle(in);
-        this.say_lines.add("Thats gonna be my room");
-        this.say_lines.add("I'll even sleep in GGV at this point, actually nm");
+        this.say_lines.add("That's gonna be my room!");
+        this.say_lines.add("I'll even sleep in GGV at this point, actually nevermind...");
         this.say_lines.add("*Pushes Glasses Up*");
-
+        this.say_lines.add("I didn't climb this far to fall off now!");
+        this.say_lines.add("My room, my rules!");
     }
      
      /**
@@ -142,7 +143,7 @@ public class Battler {
               }
            }
            enemyActionSequence();
-           int line_to_say = speech_ran.nextInt(3);
+           int line_to_say = speech_ran.nextInt(4);
            System.out.print(say_lines.get(line_to_say));
            if (player.checkDefeated()){
               System.out.println("Enemies wins!");
