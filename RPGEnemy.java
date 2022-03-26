@@ -1,12 +1,12 @@
-public class RPGEnemy
+public class RPGEnemy extends RPGCharacter
 {
-   private int hp;
+   /*private int hp;
    private int mp;
    private int attack;
    private int defense;
    private boolean defeated;
    private boolean isAlone;   //is true when the enemy is alone
-   private int num;
+   private int num;*/
    public RPGEnemy(int x, boolean y)
    {
       hp = (int)(Math.random()*(49))+51;
@@ -17,7 +17,7 @@ public class RPGEnemy
       num = x;
       isAlone = y;
    }
-   public boolean isDefeated()
+   /*public boolean isDefeated()
    {
       return defeated;
    }
@@ -52,7 +52,7 @@ public class RPGEnemy
    public void consumeSpecialMP()
    {
       mp = mp-20;
-   } 
+   }*/ 
    /**
     * This attacks other using a damage formula based on this attack and defense power.
     * If the attack causes other's HP to drop to 0 or below, other is defeated.
