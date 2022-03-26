@@ -10,6 +10,7 @@ public class Character {
    //name of character
    protected String name;
 
+   //default character archetype stats
    public Character()
    {
       this.hp = 75;
@@ -19,11 +20,13 @@ public class Character {
       this.special = 100;
    }
 
+   //set difficulty value for damage range
    public Character(double difficulty){
        this();
        this.difficulty = difficulty;
    }
 
+   //specific character stats
    public Character(double hp, double mp, double atk, double def, double special)
    {
       this.hp = hp;
@@ -49,42 +52,36 @@ public class Character {
        return this.name;
    }
 
-   public double getMP()
-   {
+   public double getMP(){
       return mp;
    }
 
-   public double getHP()
-   {
+   public double getHP(){
       return hp;
    }
 
-   public void changeToHP(double n)
-   {
-      hp = hp+n;
-   }
-
-   public void changeToMP(double change)
-   {
-      mp = mp+change;
-   }
-
-   public double getAttack()
-   {
+   public double getAttack(){
       return attack;
    }
    
-   public double getDefense()
-   {
+   public double getDefense(){
       return defense;
    }
 
-   public void changeToAttack(int n)
-   {
+   //altering values in character
+   public void changeToHP(double n){
+       hp = hp+n;
+   }
+
+   public void changeToMP(double change){
+       mp = mp+change;
+   }
+
+   public void changeToAttack(int n){
       attack = attack+n;
    }
-   public void changeToDefense(int n)
-   {
+
+   public void changeToDefense(int n){
       defense = defense+n;
    }
 
