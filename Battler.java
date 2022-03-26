@@ -51,6 +51,7 @@ public class Battler {
             if(!enemy.checkDefeated()){
                System.out.println("Enter " + i + " to attack " + enemy.getName());
             }
+            i++;
          }
          int choice = 0;
          try{

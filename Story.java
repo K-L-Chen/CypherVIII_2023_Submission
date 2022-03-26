@@ -32,7 +32,7 @@ public class Story
         System.out.println("Please enter your name");
         String name = in.nextLine();
         character = new Character(name);
-        System.out.println("Resident Life: Hello" + name + "!");
+        System.out.println("Resident Life: Hello " + name + "!");
         Continue();
         System.out.println("Resident Life: Are you ready to move in to campus? (Y/N)");
         String nothing = in.nextLine();
