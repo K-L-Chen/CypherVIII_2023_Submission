@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class DisplayImage {
+public class amogus {
     public static void main(String[] args) throws IOException {
 
         File file = new File("images/amogus.png");
