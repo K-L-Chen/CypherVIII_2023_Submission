@@ -36,7 +36,7 @@ public class Battler {
      /**
       * Prompts hero through attacking a monster
       */
-     private void attackChoice(Scanner in){
+     private void attackChoice(Scanner in, Boolean special){
          System.out.println("Which monster would you like to attack?");
          int i = 0; 
          for(Enemy enemy : enemy_list){
@@ -44,7 +44,6 @@ public class Battler {
                System.out.println("Enter " + i + " to attack " + enemy.getName());
             }
          }
-
          int choice = 0;
          try{
             choice = in.nextInt();
@@ -59,50 +58,17 @@ public class Battler {
                //ATTACK DEAD PERSON MESSAGE
             }
             else{
-               player.attack(enemy_to_attack);
+               if(special){
+                  player.specialAttack(enemy_to_attack);
+               }
+               else{
+                  player.attack(enemy_to_attack);
+               }
             }
          }
          else{
             //ATTACK NOTHING MESSAGE
          }
-     }
-     
-     private void specialChoice(Scanner in){
-        while(true){
-           System.out.println("Which monster would you like to attack?");
-           boolean monster1Alive = !monster1.isDefeated();
-           boolean monster2Alive = !monster2.isDefeated();
-           boolean monster3Alive = !monster3.isDefeated();
-           if(monster1Alive){
-              System.out.println("Enter 1 to special attack " + monster1.getName());
-           }
-           if(monster2Alive){
-              System.out.println("Enter 2 to special attack " + monster2.getName());
-           }
-           if(monster3Alive){
-              System.out.println("Enter 3 to special attack " + monster3.getName());
-           }
-           int choice = 0;
-           try{
-              choice = in.nextInt();
-           }
-           catch(Exception e){
-              System.out.println("Invalid input");
-              in.nextLine();
-           }
-           if (monster1Alive && choice == 1){
-              hero.specialAttack(monster1);
-              break;
-           }
-           else if (monster2Alive && choice == 2){
-              hero.specialAttack(monster2);
-              break;
-           }
-           else if (monster3Alive && choice == 3){
-              hero.specialAttack(monster3);
-              break;
-           }
-        }
      }
   
      /**
@@ -175,7 +141,7 @@ public class Battler {
                  in.nextLine();
               }
               if (choice == 1){
-                 attackChoice(in);
+                 attackChoice(in, false);
                  break;
               }
               else if (choice == 2){
@@ -183,7 +149,7 @@ public class Battler {
                  break;
               }
               else if(choice == 3){
-                 specialChoice(in);
+                 specialChoice(in, true);
                  break;
               }
            }
