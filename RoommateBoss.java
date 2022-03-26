@@ -8,7 +8,7 @@ public class RoommateBoss extends Battler{
         this.enemy_list = enemy_to_set;
         
         say_lines = new ArrayList<String>();
-        say_lines.add("Too bad, roomie.");
+        say_lines.add("If I lose, I gonna throw my self down the stairs!");
         say_lines.add("Heh, it's not personnel.");
         say_lines.add("Too easy!");
         say_lines.add("Heh.");
