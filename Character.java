@@ -1,14 +1,14 @@
 public class Character {
-   protected double hp;                        //Character stats
-   protected double mp;
-   protected double attack;
-   protected double defense;
-   protected double special;
-   protected boolean defeated = false;
-   protected double difficulty;
+   private double hp;                        //Character stats
+   private double mp;
+   private double attack;
+   private double defense;
+   private double special;
+   private boolean defeated = false;
+   private double difficulty = 0;
 
    //name of character
-   protected String name;
+   private String name;
 
    public Character()
    {
@@ -17,6 +17,11 @@ public class Character {
       this.attack = 30;
       this.defense = 75;
       this.special = 100;
+   }
+
+   public Character(double difficulty){
+       this();
+       this.difficulty = difficulty;
    }
 
    public Character(double hp, double mp, double atk, double def, double special)
