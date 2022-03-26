@@ -7,6 +7,12 @@ public class Character {
    protected boolean defeated = false;
    protected int difficulty = 0;
 
+   private int base_hp;
+   private int base_mp;
+   private int base_attack;
+   private int base_defense;
+   private int base_special;
+
    //name of character
    protected String name = "name";
 
@@ -17,16 +23,19 @@ public class Character {
       this.attack = 30;
       this.defense = 75;
       this.special = 100;
+
+      //save base values
+      base_hp = hp;
+      base_mp = mp;
+      base_attack = attack;
+      base_defense = defense;
+      base_special = special;
    }
 
    //default character archetype stats
    public Character(String name)
    {
-      this.hp = 75;
-      this.mp = 50;
-      this.attack = 30;
-      this.defense = 75;
-      this.special = 100;
+      this();
       this.name = name;
    }
 
@@ -45,6 +54,21 @@ public class Character {
       this.defense = def;
       this.special = special;
       this.name = name;
+
+      //save base values
+      base_hp = hp;
+      base_mp = mp;
+      base_attack = attack;
+      base_defense = defense;
+      base_special = special;
+   }
+
+   public void floorRampUp(int floorNum){
+       this.hp = this.base_hp + 10 * floorNum;
+       this.mp = this.base_mp + 10 * floorNum;
+       this.attack = this.base_attack + 10 * floorNum;
+       this.defense = this.base_defense + 10 * floorNum;
+       this.special = this.base_special + 10 * floorNum;
    }
 
    public boolean checkDefeated(){
