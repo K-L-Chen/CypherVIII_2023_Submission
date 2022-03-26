@@ -1,15 +1,22 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Battler {
     Character player; 
     ArrayList<Enemy> enemy_list = new ArrayList<Enemy>();
     Scanner in;
+    ArrayList<String> say_lines = new ArrayList<String>();
+    Random speech_ran = new Random();
 
     public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
         this.player = player_to_set;
         this.enemy_list = enemy_to_set; 
         this.start_battle(in);
+        this.say_lines.add("Thats gonna be my room");
+        this.say_lines.add("I'll even sleep in GGV at this point, actually nm");
+        this.say_lines.add("*Pushes Glasses Up*");
+
     }
      
      /**
@@ -90,7 +97,6 @@ public class Battler {
                }
            }
            enemy.attack(player);
-
         }
      }
         
@@ -136,11 +142,12 @@ public class Battler {
               }
            }
            enemyActionSequence();
+           int line_to_say = speech_ran.nextInt(3);
+           System.out.print(say_lines.get(line_to_say));
            if (player.checkDefeated()){
               System.out.println("Enemies wins!");
               gamePlaying = false;
            }
-
            boolean switch_to_over = true;
            for(Enemy enemy : enemy_list ){
               if(!enemy.checkDefeated()){

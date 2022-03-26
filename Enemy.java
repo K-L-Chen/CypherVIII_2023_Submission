@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Enemy extends Character {
     int max_health;
 
