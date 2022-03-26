@@ -1,5 +1,5 @@
 public class TutorialBoss extends Enemy{
-    public TutorialBoss()
+   public TutorialBoss()
    {
       this.hp = 120;
       this.mp = 0;
