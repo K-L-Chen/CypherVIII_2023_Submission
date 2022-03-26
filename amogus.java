@@ -8,7 +8,7 @@ import java.io.IOException;
 public class DisplayImage {
     public static void main(String[] args) throws IOException {
 
-        File file = new File("amogus.png");
+        File file = new File("images/amogus.png");
         BufferedImage bufferedImage = ImageIO.read(file);
 
         ImageIcon imageIcon = new ImageIcon(bufferedImage);
