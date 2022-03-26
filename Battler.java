@@ -92,7 +92,6 @@ public class Battler {
                for(Enemy enemy_in : enemy_list ){
                   if(enemy_in.hp < enemy_in.max_health/2){
                       enemy.heal(enemy_in);
-                      enemy.mp -= 10;
                       break;
                   }
                }

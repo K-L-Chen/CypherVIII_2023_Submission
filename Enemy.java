@@ -1,6 +1,6 @@
 public class Enemy extends Character {
     int max_health;
-
+    
     public Enemy(){
         this.hp = getRandomInt();
         this.mp = getRandomInt();
