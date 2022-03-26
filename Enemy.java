@@ -22,4 +22,6 @@ public class Enemy extends Character {
         int rand = (int)(Math.random() * 100) + 1;
         return rand;
     }
+
+    
 }

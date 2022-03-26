@@ -109,7 +109,7 @@ public class Battler {
       * Runs through the action sequence for a single monster to
       * take action (attack or heal).
       */
-     private void singleMonsterAction(RPGCharacter monster){
+     private void singleMonsterAction(Enemy monster){
         boolean chooseAttack = true;
         boolean chooseHeal = false;
         //50% chance to heal if MP high enough
