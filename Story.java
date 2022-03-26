@@ -23,6 +23,8 @@ public class Story
         int randomnumber = (int) Math.floor(Math.random()*(1000000000-900000000+1)+900000000);
         System.out.println("(To advance through text press enter to continue)");
         Continue();
+        System.out.println("Please enter your difficulty. (Enter 0, 1, or 2) (0 being easiest and 2 being hardest");
+        int difficulty = in.nextLine();
         System.out.println("Greetings Student "+ randomnumber);
         System.out.println("Please enter your name");
         String name = in.nextLine();
@@ -51,9 +53,26 @@ public class Story
         System.out.println("Also, to those who cannot find housng in time for the next academic sestemer,");
         System.out.println("free William and Mary themed cardboard boxes will be supplied by Finacial aid.");
         Continue();
+        System.out.println("If you want to fight, go to the front of the Wren building, you'll know what to do once you get there.");
         System.out.println("Good Luck with the fight!");
         System.out.println("Your 'friends' at Residence Life");
         Continue();  
+        /////////////////Tutorial Battle/////////////////
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("*As you open the doors to the Wren building, another student approaches you...*");
+        System.out.println("Computer Science Major: Python is a high level programming language!");
+        Continue();
+        System.out.println(name + ": What?");
+        System.out.println("*The Computer Science Major lunges at you to attack!*");
+        //Tutorial battle trigger here
+        System.out.println("*With The Computer Science Major defeated, you continue on into the depths of the Wren Building...*");
+        Continue();
+        ///////////////Normal Battles Start here///////////////////////////////////////////
+        for(int i = 0; i < 2+difficulty; i++)
+        {
+
+        }
     }
 
     
