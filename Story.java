@@ -1,36 +1,28 @@
 import java.util.Scanner;
-import java.util.KeyListener; 
 
 public class Story
 {
-    private String name;
-    private void battle(name)
-    {
-        RPGBattle rpg = new RPGBattle();
-        rpg.start(name);
-    }   
-    
-    private void Continue() //Press Enter to continue text
-    { 
-        try
-        {
-            System.in.read();
-        }  
-        catch(Exception e)
-        {}  
-    }
+    private Battler battler;
+    private Character character;
+    private Scanner in;
 
     public static void main(String[] args)
     {
-        int randomnumber = Math.floor(Math.random()*(1000000000-900000000+1)+900000000)
+        Story story = new Story();
+        story.start_game();   
+    }
+
+    public void start_game(){
+        int randomnumber = (int) Math.floor(Math.random()*(1000000000-900000000+1)+900000000);
         System.out.println("(To advance through text press enter to continue)");
         Continue();
         System.out.println("Greetings Student "+ randomnumber);
         System.out.println("Please enter your name");
-        name = in.nextLine();
+        String name = in.nextLine();
+        character = new Character(name);
         System.out.println("Hello" + name + "!");
         Continue();
-        System.out.println("Are you ready to move in to campus? (Y/N)")
+        System.out.println("Are you ready to move in to campus? (Y/N)");
         String nothing = in.nextLine();
         System.out.println("Too Bad!");
         Continue();
@@ -54,6 +46,19 @@ public class Story
         Continue();
         System.out.println("Good Luck with the fight!");
         System.out.println("Your 'friends' at Residence Life");
-        Continue();
+        Continue();  
     }
+
+    
+    private void Continue() //Press Enter to continue text
+    { 
+        try
+        {
+            System.in.read();
+        }  
+        catch(Exception e)
+        {}  
+    }
+
+
 }
