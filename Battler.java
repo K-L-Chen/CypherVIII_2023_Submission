@@ -1,12 +1,15 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Battler {
     Character player; 
     ArrayList<Enemy> enemy = new ArrayList<Enemy>();
+    Scanner in;
 
-    public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set){
+    public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
         this.player = player_to_set;
         this.enemy = enemy_to_set; 
+        this.start_battle(in);
     }
      
      /**
@@ -168,7 +171,7 @@ public class Battler {
      /**
       * Controls the battle sequence
       */
-     private void battle(Scanner in){
+     private void start_battle(Scanner in){
         boolean gamePlaying = true;
         while (gamePlaying){
            showStats();
