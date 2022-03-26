@@ -1,4 +1,4 @@
-public class TutorialBoss extends Character{
+public class TutorialBoss extends Enemy{
     public TutorialBoss()
    {
       this.hp = 120;
