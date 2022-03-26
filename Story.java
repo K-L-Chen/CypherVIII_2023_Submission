@@ -151,7 +151,7 @@ public class Story
     private ArrayList<Enemy> createEnemies(int enemy_count, int difficulty){
         ArrayList<Enemy> enemy_list = new ArrayList<Enemy>();
         for(int i=0; i<enemy_count; i++){
-            enemy_list.add(new Enemy(difficulty, rand_gen.nextInt()));
+            enemy_list.add(new Enemy(difficulty, rand_gen.nextInt(100)));
         }
         return enemy_list;
     }
