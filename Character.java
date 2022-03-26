@@ -1,11 +1,11 @@
 public class Character {
-   protected double hp;                        //Character stats
-   protected double mp;
-   protected double attack;
-   protected double defense;
-   protected double special;
+   protected int hp;                        //Character stats
+   protected int mp;
+   protected int attack;
+   protected int defense;
+   protected int special;
    protected boolean defeated = false;
-   protected double difficulty = 0;
+   protected int difficulty = 0;
 
    //name of character
    protected String name = "name";
@@ -31,13 +31,13 @@ public class Character {
    }
 
    //set difficulty value for damage range
-   public Character(double difficulty, String name){
+   public Character(int difficulty, String name){
        this(name);
        this.difficulty = difficulty;
    }
 
    //specific character stats
-   public Character(double hp, double mp, double atk, double def, double special, String name)
+   public Character(int hp, int mp, int atk, int def, int special, String name)
    {
       this.hp = hp;
       this.mp = mp;
@@ -63,28 +63,28 @@ public class Character {
        return this.name;
    }
 
-   public double getMP(){
+   public int getMP(){
       return mp;
    }
 
-   public double getHP(){
+   public int getHP(){
       return hp;
    }
 
-   public double getAttack(){
+   public int getAttack(){
       return attack;
    }
    
-   public double getDefense(){
+   public int getDefense(){
       return defense;
    }
 
    //altering values in character
-   public void changeToHP(double n){
+   public void changeToHP(int n){
        hp = hp+n;
    }
 
-   public void changeToMP(double change){
+   public void changeToMP(int change){
        mp = mp+change;
    }
 
@@ -96,7 +96,7 @@ public class Character {
       defense = defense+n;
    }
 
-   public int damageRange(double atk, double enemyDef){
+   public int damageRange(int atk, int enemyDef){
         return (int)((atk/ (1000.0 /(1000 + enemyDef))) + (Math.random() * (difficulty+1)));
    }
 
@@ -137,7 +137,7 @@ public class Character {
       //Does this have sufficient MP?
       if(this.mp >= 10){
          this.changeToMP(-10);
-         double healPoints;
+         int healPoints;
          //What is other's class?
          healPoints = 30;
          hp = hp + healPoints;
