@@ -10,7 +10,7 @@ public class Story
         rpg.start(name);
     }   
     
-    private void Continue()
+    private void Continue() //Press Enter to continue text
     { 
         try
         {
