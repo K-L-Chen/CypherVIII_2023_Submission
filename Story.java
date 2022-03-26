@@ -9,6 +9,7 @@ public class Story
     private Scanner in;
     private Random rand_gen;
 
+
     public static void main(String[] args)
     {
         Story story = new Story();
@@ -24,7 +25,8 @@ public class Story
         System.out.println("(To advance through text press enter to continue)");
         Continue();
         System.out.println("Please enter your difficulty. (Enter 0, 1, or 2) (0 being easiest and 2 being hardest)");
-        int difficulty = Integer.parseInt(in.nextLine());
+        String dif = in.nextLine();
+        int difficulty = Integer.parseInt(dif);
         System.out.println("Greetings Student "+ randomnumber);
         System.out.println("Please enter your name");
         String name = in.nextLine();
