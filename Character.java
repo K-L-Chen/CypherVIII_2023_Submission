@@ -5,7 +5,7 @@ public class Character {
    protected double defense;
    protected double special;
    protected boolean defeated = false;
-   protected double difficulty;
+   protected double difficulty = 0;
 
    //name of character
    protected String name;
@@ -17,6 +17,11 @@ public class Character {
       this.attack = 30;
       this.defense = 75;
       this.special = 100;
+   }
+
+   public Character(double difficulty){
+       this();
+       this.difficulty = difficulty;
    }
 
    public Character(double hp, double mp, double atk, double def, double special)
@@ -105,7 +110,7 @@ public class Character {
       if (this.mp >= 20)
       {
          this.changeToMP(-20);
-         int damage = damageRange(this.special, other.getDefense());
+         int damage = damageRange(this.special, other.defense);
             other.changeToHP((-1) * damage);
             if(other.getHP() <= 0){
                other.isNowDefeated();
