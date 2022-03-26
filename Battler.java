@@ -38,7 +38,7 @@ public class Battler {
      private void showMenu(){
         System.out.println("Enter 1 to attack");
         System.out.println("Enter 2 to heal (costs 10MP)");
-        System.out.println("Enter 3 to perform a special attack (costs 20MP)(has a 20% chance to miss)");
+        System.out.println("Enter 3 to perform a special attack (costs 20MP)");
      }
      
      /**
@@ -144,8 +144,10 @@ public class Battler {
            enemyActionSequence();
            int line_to_say = speech_ran.nextInt(4);
            System.out.print(say_lines.get(line_to_say));
+           Continue();
            if (player.checkDefeated()){
               System.out.println("Enemies wins!");
+              Continue();
               gamePlaying = false;
            }
            boolean switch_to_over = true;
@@ -156,9 +158,20 @@ public class Battler {
               }
               if(switch_to_over){
                 System.out.println(player.getName() + " Wins!");
+                Continue();
               }
            }
            gamePlaying = !switch_to_over;
            }
         }
+
+        private void Continue() //Press Enter to continue text
+    { 
+        try
+        {
+            System.in.read();
+        }  
+        catch(Exception e)
+        {}  
+    }
      }
