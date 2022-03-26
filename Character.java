@@ -5,6 +5,7 @@ public class Character {
    protected double defense;
    protected double special;
    protected boolean defeated = false;
+   protected double difficulty;
 
    //name of character
    protected String name;
@@ -78,6 +79,10 @@ public class Character {
       defense = defense+n;
    }
 
+   public int damageRange(double enemyDef){
+        return (int)((this.attack/ (1000.0 /(1000 + enemyDef))) + (Math.random() * (difficulty+1)));
+   }
+
    /**
     * This attacks other using a damage formula based on this attack and defense power.
     * If the attack causes other's HP to drop to 0 or below, other is defeated.
@@ -93,7 +98,7 @@ public class Character {
          System.out.println("The enemy" + " is defeated!"); 
       }
    }
-   public void specialAttack(RPGEnemy other)
+   public void specialAttack(Enemy other)
    {
       if (this.mp >= 20)
       {
@@ -116,7 +121,7 @@ public class Character {
     * Warriors are healed by 70.
     * Mages are healed by 30.
     */
-   public void heal(RPGCharacter other){
+   public void heal(Character other){
       System.out.println("You heal yourself!");
       //Does this have sufficient MP?
       if(this.mp >= 10){
