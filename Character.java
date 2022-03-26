@@ -8,7 +8,7 @@ public class Character {
    protected double difficulty = 0;
 
    //name of character
-   protected String name;
+   protected String name = "name";
 
    public Character()
    {
@@ -19,18 +19,32 @@ public class Character {
       this.special = 100;
    }
 
-   public Character(double difficulty){
-       this();
+   //default character archetype stats
+   public Character(String name)
+   {
+      this.hp = 75;
+      this.mp = 50;
+      this.attack = 30;
+      this.defense = 75;
+      this.special = 100;
+      this.name = name;
+   }
+
+   //set difficulty value for damage range
+   public Character(double difficulty, String name){
+       this(name);
        this.difficulty = difficulty;
    }
 
-   public Character(double hp, double mp, double atk, double def, double special)
+   //specific character stats
+   public Character(double hp, double mp, double atk, double def, double special, String name)
    {
       this.hp = hp;
       this.mp = mp;
       this.attack = atk;
       this.defense = def;
       this.special = special;
+      this.name = name;
    }
 
    public boolean checkDefeated(){
@@ -49,42 +63,36 @@ public class Character {
        return this.name;
    }
 
-   public double getMP()
-   {
+   public double getMP(){
       return mp;
    }
 
-   public double getHP()
-   {
+   public double getHP(){
       return hp;
    }
 
-   public void changeToHP(double n)
-   {
-      hp = hp+n;
-   }
-
-   public void changeToMP(double change)
-   {
-      mp = mp+change;
-   }
-
-   public double getAttack()
-   {
+   public double getAttack(){
       return attack;
    }
    
-   public double getDefense()
-   {
+   public double getDefense(){
       return defense;
    }
 
-   public void changeToAttack(int n)
-   {
+   //altering values in character
+   public void changeToHP(double n){
+       hp = hp+n;
+   }
+
+   public void changeToMP(double change){
+       mp = mp+change;
+   }
+
+   public void changeToAttack(int n){
       attack = attack+n;
    }
-   public void changeToDefense(int n)
-   {
+
+   public void changeToDefense(int n){
       defense = defense+n;
    }
 
