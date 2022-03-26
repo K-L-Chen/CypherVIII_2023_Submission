@@ -105,7 +105,7 @@ public class Battler {
      /**
       * Controls the battle sequence
       */
-     private void start_battle(Scanner in){
+     protected void start_battle(Scanner in){
         boolean gamePlaying = true;
         while (gamePlaying){
            showStats();
