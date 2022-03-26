@@ -10,11 +10,11 @@ public class Enemy extends Character {
 
     public Enemy(int difficulty, int enemy_number){
         this();
-        this.hp *= difficulty;
-        this.mp *= difficulty;
-        this.attack *= difficulty;
-        this.defense *= difficulty;
-        this.special *= difficulty;
+        this.hp <<= difficulty;
+        this.mp <<= difficulty;
+        this.attack <<= difficulty;
+        this.defense <<= difficulty;
+        this.special <<= difficulty;
         this.name = "WaitListed_" + enemy_number;
     }
     

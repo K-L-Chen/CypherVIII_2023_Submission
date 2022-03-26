@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class Battler {
     Character player; 
-    ArrayList<Enemy> enemy = new ArrayList<Enemy>();
+    ArrayList<Enemy> enemy_list = new ArrayList<Enemy>();
     Scanner in;
 
     public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
         this.player = player_to_set;
-        this.enemy = enemy_to_set; 
+        this.enemy_list = enemy_to_set; 
         this.start_battle(in);
     }
      
@@ -16,15 +16,11 @@ public class Battler {
       * Show the stats of all non-defeated characters
       */
      private void showStats(){
-        System.out.println(hero);
-        if(!monster1.isDefeated()){
-           System.out.println(monster1);
-        }
-        if(!monster2.isDefeated()){
-           System.out.println(monster2);
-        }
-        if(!monster3.isDefeated()){
-           System.out.println(monster3);
+        System.out.print(this.player);
+        for(Enemy enemy : enemy_list){
+           if(!enemy.checkDefeated()){
+              System.out.println(enemy);
+           }
         }
      }
      
@@ -43,18 +39,13 @@ public class Battler {
      private void attackChoice(Scanner in){
         while(true){
            System.out.println("Which monster would you like to attack?");
-           boolean monster1Alive = !monster1.isDefeated();
-           boolean monster2Alive = !monster2.isDefeated();
-           boolean monster3Alive = !monster3.isDefeated();
-           if(monster1Alive){
-              System.out.println("Enter 1 to attack " + monster1.getName());
+           int i = 0; 
+           for(Enemy enemy : enemy_list){
+              if(!enemy.checkDefeated()){
+                  System.out.println("Enter " + i + " to attack " + enemy.getName());
+              }
            }
-           if(monster2Alive){
-              System.out.println("Enter 2 to attack " + monster2.getName());
-           }
-           if(monster3Alive){
-              System.out.println("Enter 3 to attack " + monster3.getName());
-           }
+
            int choice = 0;
            try{
               choice = in.nextInt();
@@ -63,17 +54,17 @@ public class Battler {
               System.out.println("Invalid input");
               in.nextLine();
            }
-           if (monster1Alive && choice == 1){
-              hero.attack(monster1);
-              break;
+           Enemy enemy_to_attack = enemy_list.get(choice);
+           if(choice < enemy_list.size()){
+              if(enemy_to_attack.checkDefeated()){
+                 //ATTACK DEAD PERSON MESSAGE
+              }
+              else{
+                 player.attack(enemy_to_attack);
+              }
            }
-           else if (monster2Alive && choice == 2){
-              hero.attack(monster2);
-              break;
-           }
-           else if (monster3Alive && choice == 3){
-              hero.attack(monster3);
-              break;
+           else{
+              //ATTACK NOTHING MESSAGE
            }
         }
      }
