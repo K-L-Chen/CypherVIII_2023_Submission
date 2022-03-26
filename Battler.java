@@ -17,7 +17,7 @@ public class Battler {
         this.say_lines.add("I'll even sleep in GGV at this point, actually nevermind...");
         this.say_lines.add("*Pushes Glasses Up*");
         this.say_lines.add("I didn't climb this far to fall off now!");
-        this.say_lines.add("My room, my rules!");
+        this.say_lines.add("My room, my rules!"); 
     }
      
      /**
