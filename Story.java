@@ -21,6 +21,7 @@ public class Story
     }
 
     public void start_game(){
+        in = new Scanner(System.in);
         int randomnumber = (int) Math.floor(Math.random()*(1000000000-900000000+1)+900000000);
         System.out.println("(To advance through text press enter to continue)");
         Continue();
