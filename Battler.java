@@ -169,7 +169,7 @@ public class Battler {
     { 
         try
         {
-            System.in.read();
+           in.nextLine();
         }  
         catch(Exception e)
         {}  
