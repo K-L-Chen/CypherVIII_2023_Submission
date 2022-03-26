@@ -37,36 +37,34 @@ public class Battler {
       * Prompts hero through attacking a monster
       */
      private void attackChoice(Scanner in){
-        while(true){
-           System.out.println("Which monster would you like to attack?");
-           int i = 0; 
-           for(Enemy enemy : enemy_list){
-              if(!enemy.checkDefeated()){
-                  System.out.println("Enter " + i + " to attack " + enemy.getName());
-              }
-           }
+         System.out.println("Which monster would you like to attack?");
+         int i = 0; 
+         for(Enemy enemy : enemy_list){
+            if(!enemy.checkDefeated()){
+               System.out.println("Enter " + i + " to attack " + enemy.getName());
+            }
+         }
 
-           int choice = 0;
-           try{
-              choice = in.nextInt();
-           }
-           catch(Exception e){
-              System.out.println("Invalid input");
-              in.nextLine();
-           }
-           Enemy enemy_to_attack = enemy_list.get(choice);
-           if(choice < enemy_list.size()){
-              if(enemy_to_attack.checkDefeated()){
-                 //ATTACK DEAD PERSON MESSAGE
-              }
-              else{
-                 player.attack(enemy_to_attack);
-              }
-           }
-           else{
-              //ATTACK NOTHING MESSAGE
-           }
-        }
+         int choice = 0;
+         try{
+            choice = in.nextInt();
+         }
+         catch(Exception e){
+            System.out.println("Invalid input");
+            in.nextLine();
+         }
+         Enemy enemy_to_attack = enemy_list.get(choice);
+         if(choice < enemy_list.size()){
+            if(enemy_to_attack.checkDefeated()){
+               //ATTACK DEAD PERSON MESSAGE
+            }
+            else{
+               player.attack(enemy_to_attack);
+            }
+         }
+         else{
+            //ATTACK NOTHING MESSAGE
+         }
      }
      
      private void specialChoice(Scanner in){
