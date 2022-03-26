@@ -8,32 +8,34 @@ public class Character {
    protected double difficulty = 0;
 
    //name of character
-   protected String name;
+   protected String name = "name";
 
    //default character archetype stats
-   public Character()
+   public Character(String name)
    {
       this.hp = 75;
       this.mp = 50;
       this.attack = 30;
       this.defense = 75;
       this.special = 100;
+      this.name = name;
    }
 
    //set difficulty value for damage range
-   public Character(double difficulty){
-       this();
+   public Character(double difficulty, String name){
+       this(name);
        this.difficulty = difficulty;
    }
 
    //specific character stats
-   public Character(double hp, double mp, double atk, double def, double special)
+   public Character(double hp, double mp, double atk, double def, double special, String name)
    {
       this.hp = hp;
       this.mp = mp;
       this.attack = atk;
       this.defense = def;
       this.special = special;
+      this.name = name;
    }
 
    public boolean checkDefeated(){
