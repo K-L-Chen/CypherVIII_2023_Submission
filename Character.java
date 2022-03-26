@@ -32,6 +32,10 @@ public class Character {
        return defeated;
    }
 
+   public void isNowDefeated(){
+       this.defeated = true;
+   }
+
    public void setName(String name){
         this.name = name;
    }
@@ -79,37 +83,32 @@ public class Character {
       defense = defense+n;
    }
 
-   public int damageRange(double enemyDef){
-        return (int)((this.attack/ (1000.0 /(1000 + enemyDef))) + (Math.random() * (difficulty+1)));
+   public int damageRange(double atk, double enemyDef){
+        return (int)((atk/ (1000.0 /(1000 + enemyDef))) + (Math.random() * (difficulty+1)));
    }
 
    /**
     * This attacks other using a damage formula based on this attack and defense power.
     * If the attack causes other's HP to drop to 0 or below, other is defeated.
     */
-   public void attack(Enemy other)
+   public void attack(Character other)
    {
-      System.out.println("You" + " attack " + "the enemy" + "!");
-      int damage = (int)(this.attack / (1000.0 /(1000 + defense)));  //Formula sourced from: http://rpg.wikia.com/wiki/Damage_Formula
-      System.out.println("Does " + damage + " damage!");
-      other.subtractHP(damage);
+      int damage = damageRange(this.attack, other.getDefense());  //Formula sourced from: http://rpg.wikia.com/wiki/Damage_Formula
+      
+      other.changeToHP(damage);
       if(other.getHP() <= 0){
          other.isNowDefeated();
-         System.out.println("The enemy" + " is defeated!"); 
       }
    }
-   public void specialAttack(Enemy other)
+   public void specialAttack(Character other)
    {
       if (this.mp >= 20)
       {
          this.changeToMP(-20);
-         System.out.println("You special attack the enemy!");
-         int damage = (int)(this.special / (1000.0 /(1000 + other.getDefense())));
-         System.out.println("Does " + damage + " damage!");
-            other.subtractHP(damage);
+         int damage = damageRange(this.special, other.getDefense());
+            other.changeToHP((-1) * damage);
             if(other.getHP() <= 0){
                other.isNowDefeated();
-               System.out.println("The enemy" + " is defeated!");
             }
       }      
       else{
@@ -122,7 +121,6 @@ public class Character {
     * Mages are healed by 30.
     */
    public void heal(Character other){
-      System.out.println("You heal yourself!");
       //Does this have sufficient MP?
       if(this.mp >= 10){
          this.changeToMP(-10);
@@ -130,7 +128,6 @@ public class Character {
          //What is other's class?
          healPoints = 30;
          hp = hp + healPoints;
-         System.out.println("You heal 30 HP!");
       }
       else{
          System.out.println("Not enough MP!");
@@ -138,6 +135,6 @@ public class Character {
    }
    public String toString()
    {
-      return "Your Stats:\n HP: "+hp+"    MP: "+mp+"\n Attack:"+attack+"   Special: "+special+"    Defense:"+defense+"";
+      return "Stats:\n HP: "+hp+"    MP: "+mp+"\n Attack:"+attack+"   Special: "+special+"    Defense:"+defense+"";
    }
 }
