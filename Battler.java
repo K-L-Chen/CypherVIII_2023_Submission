@@ -83,54 +83,22 @@ public class Battler {
            for(Enemy enemy_in : enemy_list ){
               if(enemy_in.hp < enemy_in.max_health/2){
                  enemy.heal(enemy_in);
+                 break;
               }
+           }
+           enemy.attack(player);
 
-           }
-        }
-        boolean chooseAttack = true;
-        boolean chooseHeal = false;
-        //50% chance to heal if MP high enough
-        if (monster.getMP() >= 10 && Math.random() < 0.5){
-           chooseAttack = false;
-           chooseHeal = true;
-        }
-        //10% chance to erroneously heal            
-        else if (Math.random() < 0.1){
-           chooseAttack = false;
-           chooseHeal = true;
-        }
-        if (chooseHeal){
-           int target = (int)(Math.random() * 3) + 1;
-           if (target == 1){
-              monster.heal(monster1);
-           }
-           else if (target == 2){
-              monster.heal(monster2);
-           }
-           else{
-              monster.heal(monster3);
-           }
-        }
-        else{
-           monster.attack(hero);
         }
      }
         
     /**
      * Allows each non-defeated monster to attack or heal.
      */      
-     private void monsterActionSequence(){
-        boolean monster1Alive = !monster1.isDefeated();
-        boolean monster2Alive = !monster2.isDefeated();
-        boolean monster3Alive = !monster3.isDefeated();
-        if (monster1Alive){
-           singleMonsterAction(monster1);
-        }
-        if (monster2Alive){
-           singleMonsterAction(monster2);
-        }
-        if (monster3Alive){
-           singleMonsterAction(monster3);
+     private void enemyActionSequence(){
+        for(Enemy enemy : enemy_list){
+           if(!enemy.checkDefeated()){
+              singleEnemyAction(enemy);
+           }
         }
      }
      
@@ -156,23 +124,31 @@ public class Battler {
                  break;
               }
               else if (choice == 2){
-                 hero.heal(hero);
+                 player.heal(player);
                  break;
               }
               else if(choice == 3){
-                 specialChoice(in, true);
+                 attackChoice(in, true);
                  break;
               }
            }
-           monsterActionSequence();
-           if (hero.isDefeated()){
-              System.out.println("Monsters win!");
+           enemyActionSequence();
+           if (player.checkDefeated()){
+              System.out.println("Enemies wins!");
               gamePlaying = false;
            }
-           else if (monster1.isDefeated() && monster2.isDefeated() 
-                    && monster3.isDefeated()){
-              System.out.println(hero.getName() + " wins!");
-              gamePlaying = false;
+
+           boolean switch_to_over = true;
+           for(Enemy enemy : enemy_list ){
+              if(!enemy.checkDefeated()){
+                 switch_to_over = false;
+                 break;
+              }
+              if(switch_to_over){
+                System.out.println(player.getName() + " Wins!");
+              }
+           }
+           gamePlaying = !switch_to_over;
            }
         }
      }
