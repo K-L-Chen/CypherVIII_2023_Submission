@@ -1,15 +1,22 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Story
 {
     private Battler battler;
     private Character character;
     private Scanner in;
+    private Random rand_gen;
 
     public static void main(String[] args)
     {
         Story story = new Story();
         story.start_game();   
+    }
+
+    public Story(){
+        rand_gen = new Random(100);
     }
 
     public void start_game(){
@@ -58,6 +65,14 @@ public class Story
         }  
         catch(Exception e)
         {}  
+    }
+
+    private ArrayList<Enemy> createEnemeies(int enemy_count, int difficulty){
+        ArrayList<Enemy> enemy_list = new ArrayList<Enemy>();
+        for(int i=0; i<enemy_count; i++){
+            enemy_list.add(new Enemy(difficulty, rand_gen.nextInt()));
+        }
+        return enemy_list;
     }
 
 
