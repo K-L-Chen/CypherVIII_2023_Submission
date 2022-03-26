@@ -23,5 +23,7 @@ public class Enemy extends Character {
         return rand;
     }
 
-    
+    public int damageRange(int atk, int enemyDef){
+        return (int)((atk/ (1000.0 /(1000 + enemyDef))) - (Math.random() * (difficulty+1)));
+   }
 }
