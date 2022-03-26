@@ -10,6 +10,15 @@ public class Character {
    //name of character
    protected String name = "name";
 
+   public Character()
+   {
+      this.hp = 75;
+      this.mp = 50;
+      this.attack = 30;
+      this.defense = 75;
+      this.special = 100;
+   }
+
    //default character archetype stats
    public Character(String name)
    {
