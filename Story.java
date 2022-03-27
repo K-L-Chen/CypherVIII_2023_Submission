@@ -81,6 +81,10 @@ public class Story
         System.out.println("Suddenly a Random Student jumps out at you!");
         Continue();
         battler = new Battler(character, createEnemies(3, difficulty), in);
+        if(!battler.winning){
+            //MAKE LOSING MESSAGE
+            return ;
+        }
         System.out.println("*With the student defeat you move on to the second floor");
         Continue();
         System.out.println("*The second floor isn't much better, but on the ground you see a student face down on the ground*");

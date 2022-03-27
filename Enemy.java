@@ -21,7 +21,7 @@ public class Enemy extends Character {
     }
     
     public int getRandomInt(){
-        int rand = (int)(Math.random() * 100) + 1;
+        int rand = (int)(Math.random() * 30) + 1;
         return rand;
     }
 

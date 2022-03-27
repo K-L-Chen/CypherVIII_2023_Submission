@@ -8,6 +8,7 @@ public class Battler {
     Scanner in;
     ArrayList<String> say_lines = new ArrayList<String>();
     Random speech_ran = new Random();
+    boolean winning = true;
 
     public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
         this.player = player_to_set;
@@ -115,7 +116,7 @@ public class Battler {
      /**
       * Controls the battle sequence
       */
-     protected void start_battle(Scanner in){
+     protected boolean start_battle(Scanner in){
         boolean gamePlaying = true;
         while (gamePlaying){
            showStats();
@@ -149,6 +150,7 @@ public class Battler {
            Continue();
            if (player.checkDefeated()){
               System.out.println("Enemies wins!");
+              winning = false;
               Continue();
               gamePlaying = false;
            }
@@ -167,7 +169,8 @@ public class Battler {
              gamePlaying = !switch_to_over;
            }
          }
-        }
+         return winning;
+      }
 
         private void Continue() //Press Enter to continue text
     { 
