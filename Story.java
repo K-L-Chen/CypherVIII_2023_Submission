@@ -72,7 +72,15 @@ public class Story
         System.out.println("*The Computer Science Major lunges at you to attack!*");
         Continue();
         //Tutorial battle trigger here
-
+        ArrayList<Enemy> tutorial = new ArrayList<Enemy>();
+        tutorial.add(new TutorialBoss());
+        battler = new TutorialBattle(character, tutorial, in);
+        if(!battler.winning){
+            //LOOSING MESSAGE
+            System.out.println("A loss befalls you... and a cardboard box awaits.");
+            return;
+        }
+        
         floorNum++;
         character.floorRampUp(floorNum);
 
@@ -86,10 +94,13 @@ public class Story
         Continue();
 
         battler = new Battler(character, createEnemies(3, difficulty), in);
-        if(battler.winning){
+        if(!battler.winning){
             //LOOSING MESSAGE
+            System.out.println("A loss befalls you... and a cardboard box awaits.");
             return;
         }
+        floorNum++;
+        character.floorRampUp(floorNum);
 
         System.out.println("*With the student defeat you move on to the second floor");
         Continue();
@@ -99,6 +110,16 @@ public class Story
         System.out.println("*As you are distracted another Student jumps out and attacks!*");
         Continue();
         //Normal battle trigger here
+
+        battler = new Battler(character, createEnemies(2, difficulty), in);
+        if(!battler.winning){
+            //LOOSING MESSAGE
+            System.out.println("A loss befalls you... and a cardboard box awaits.");
+            return;
+        }
+        floorNum++;
+        character.floorRampUp(floorNum);
+
         System.out.println("Another student defeated! You move on to the final floor stepping over the crying student as you go.*");
         Continue();
         //////////////////Former Roommate Mid-Boss/////////////////////////
@@ -112,10 +133,18 @@ public class Story
         Continue();
         System.out.println("Former Roommate: What I'm saying is there is only one single left. AND IT WILL BE MINE!");
         //Roommate battle trigger here
+        ArrayList<Enemy> roommate = new ArrayList<Enemy>();
+        roommate.add(new Roommate(difficulty));
 
+        battler = new RoommateBoss(character, roommate, in);
+        if(!battler.winning){
+            //LOOSING MESSAGE
+            System.out.println("A loss befalls you... and a cardboard box awaits.");
+            return;
+        }
         floorNum++;
         character.floorRampUp(floorNum);
-
+        
         System.out.println("Former Roommate: Heh. You're good. See you later, roomie.");
         Continue();
         System.out.println("* Your former roommate then throws themselves down the stairs. There fine. Probably.*");
@@ -138,7 +167,16 @@ public class Story
         System.out.println("Residence Life: Then prove you self and make me.");
         //Final Boss Trigger here
 
-        
+        ArrayList<Enemy> reslife = new ArrayList<Enemy>();
+        reslife.add(new ResLife(difficulty));
+
+        battler = new ResLifeBoss(character, reslife, in);
+        if(!battler.winning){
+            //LOOSING MESSAGE
+            System.out.println("A loss befalls you... and a cardboard box awaits.");
+            return;
+        }
+
         System.out.println("Resident Life: You make a good point. I guess we won't make everyone homeless.");
         Continue();
         System.out.println("Resident Life: For this deed, I will grant you a room. The best room we have.");

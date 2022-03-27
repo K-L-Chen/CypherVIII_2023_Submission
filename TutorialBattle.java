@@ -13,7 +13,7 @@ public class TutorialBattle extends Battler{
         say_lines = new ArrayList<String>();
         say_lines.add("Prepare to be executed!");
         say_lines.add("Time for a throw down!");
-        say_lines.add("Catch this!");
+        say_lines.add("*Computer Science Major attempts to explain why Python is superior to Java. He's wrong.*");
         say_lines.add("Fine, I'll commit my all to this!");
         say_lines.add("No exceptions!");
         this.start_battle(in);
