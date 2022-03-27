@@ -11,11 +11,11 @@ public class TutorialBattle extends Battler{
         //this.enemy_list = enemy_to_set;
         //super.say_lines = new ArrayList<String>();
         this.enemy_list.add(new TutorialBoss());
-        this.say_lines.add("\nPrepare to be executed!\n");
-        this.say_lines.add("\nTime for a throw down!\n");
-        this.say_lines.add("\n*Computer Science Major attempts to explain why Python is superior to Java. He's wrong.*\n");
-        this.say_lines.add("\nFine, I'll commit my all to this!\n");
-        this.say_lines.add("\nNo exceptions!\n");
+        this.say_lines.add("\n\nComputer Science Major: Prepare to be executed!\n\n");
+        this.say_lines.add("\n\nComputer Science Major: Time for a throw down!\n\n");
+        this.say_lines.add("\n\n*Computer Science Major attempts to explain why Python is superior to Java. He's wrong.*\n\n");
+        this.say_lines.add("\n\nComputer Science Major: I'll commit my all to this!\n\n");
+        this.say_lines.add("\n\nComputer Science Major: No exceptions!\n\n");
         this.start_battle(in);
     }
 }

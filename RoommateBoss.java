@@ -8,11 +8,11 @@ public class RoommateBoss extends Battler{
         this.enemy_list.add(new Roommate(difficulty));
         
         say_lines = new ArrayList<String>();
-        say_lines.add("\nIf I lose, I gonna throw my self down the stairs!\n");
-        say_lines.add("\nHeh, it's not personnel.\n");
-        say_lines.add("\nToo easy!\n");
-        say_lines.add("\nHeh.\n");
-        say_lines.add("\nI won't lose here, roomie!\n");
+        say_lines.add("\n\nRoommate: If I lose, I gonna throw my self down the stairs!\n\n");
+        say_lines.add("\n\nRoommate: Heh, it's not personnel.\n\n");
+        say_lines.add("\nRoommate: Too easy!\n");
+        say_lines.add("\n\nRoommate: Heh.\n\n");
+        say_lines.add("\n\nRoommate: I won't lose here, roomie!\n\n");
         this.start_battle(in);
     }
 }

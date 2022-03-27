@@ -97,7 +97,7 @@ public class Story
         System.out.println("*As you enter the first floor of the Wren building a strange feeling washes over you.*");
         Continue();
         System.out.println("*There is not a soul in sight and the sense of dread from hundreds of first time renters permeates the air.*");
-        System.out.println("Suddenly a Random Student jumps out at you!");
+        System.out.println("Suddenly a group of students jumps out at you!");
         Continue();
 
         battler = new Battler(character, createEnemies(3, difficulty), in);

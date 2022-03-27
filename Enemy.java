@@ -17,7 +17,7 @@ public class Enemy extends Character {
         this.attack <<= difficulty;
         this.defense <<= difficulty;
         this.special <<= difficulty;
-        this.name = "WaitListed_" + enemy_number;
+        this.name = "Waitlisted Student " + enemy_number;
     }
     
     public int getRandomInt(){
