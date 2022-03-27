@@ -8,7 +8,7 @@ public class Story
     private Character character;
     private Scanner in;
     private Random rand_gen;
-
+    private int floorNum;
 
     public static void main(String[] args)
     {
@@ -72,6 +72,10 @@ public class Story
         System.out.println("*The Computer Science Major lunges at you to attack!*");
         Continue();
         //Tutorial battle trigger here
+
+        floorNum++;
+        character.floorRampUp(floorNum);
+
         System.out.println("*With The Computer Science Major defeated, you continue on into the depths of the Wren Building...*");
         Continue();
         ///////////////Normal Battles Start here///////////////////////////////////////////
@@ -80,7 +84,11 @@ public class Story
         System.out.println("*There is not a soul in sight and the sense of dread from hundreds of first time renters permeates the air.*");
         System.out.println("Suddenly a Random Student jumps out at you!");
         Continue();
+
         battler = new Battler(character, createEnemies(3, difficulty), in);
+        floorNum++;
+        character.floorRampUp(floorNum);
+
         System.out.println("*With the student defeat you move on to the second floor");
         Continue();
         System.out.println("*The second floor isn't much better, but on the ground you see a student face down on the ground*");
@@ -102,6 +110,10 @@ public class Story
         Continue();
         System.out.println("Former Roommate: What I'm saying is there is only one single left. AND IT WILL BE MINE!");
         //Roommate battle trigger here
+
+        floorNum++;
+        character.floorRampUp(floorNum);
+
         System.out.println("Former Roommate: Heh. You're good. See you later, roomie.");
         Continue();
         System.out.println("* Your former roommate then throws themselves down the stairs. There fine. Probably.*");
@@ -123,6 +135,8 @@ public class Story
         Continue();
         System.out.println("Residence Life: Then prove you self and make me.");
         //Final Boss Trigger here
+
+        
         System.out.println("Resident Life: You make a good point. I guess we won't make everyone homeless.");
         Continue();
         System.out.println("Resident Life: For this deed, I will grant you a room. The best room we have.");
