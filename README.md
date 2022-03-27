@@ -2,7 +2,7 @@
 
 [H O U S I N G R O Y A L E]
 
-RNG Battle System to make it to the top of the Wren Building and get off the waitlist!
+RPG Battle System to make it to the top of the Wren Building and get off the waitlist!
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣿⣿⣷⣶⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣾⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀
