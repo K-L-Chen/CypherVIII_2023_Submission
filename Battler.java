@@ -12,12 +12,12 @@ public class Battler {
     public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
         this.player = player_to_set;
         this.enemy_list = enemy_to_set; 
+        this.say_lines.add("\n That's gonna be my room! \n");
+        this.say_lines.add("\n I'll even sleep in GGV at this point, actually nevermind... \n");
+        this.say_lines.add("\n *Pushes Glasses Up \n");
+        this.say_lines.add("\n I didn't climb this far to fall off now! \n");
+        this.say_lines.add("\n My room, my rules! \n"); 
         this.start_battle(in);
-        this.say_lines.add("That's gonna be my room!");
-        this.say_lines.add("I'll even sleep in GGV at this point, actually nevermind...");
-        this.say_lines.add("*Pushes Glasses Up*");
-        this.say_lines.add("I didn't climb this far to fall off now!");
-        this.say_lines.add("My room, my rules!"); 
     }
      
      /**
@@ -25,11 +25,6 @@ public class Battler {
       */
      private void showStats(){
         System.out.print(this.player);
-        for(Enemy enemy : enemy_list){
-           if(!enemy.checkDefeated()){
-              System.out.println(enemy);
-           }
-        }
      }
      
      /**
