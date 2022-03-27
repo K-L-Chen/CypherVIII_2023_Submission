@@ -22,7 +22,7 @@ public class Story
 
     public void start_game(){
         in = new Scanner(System.in);
-        int randomnumber = (int) Math.floor(Math.random()*(940000000-930000000+1)+930000000);
+        int randomnumber = (int) Math.floor(Math.random()*(1000000000-900000000+1)+900000000);
         System.out.println("(To advance through text press enter to continue)");
         Continue();
         System.out.println("Please enter your difficulty. (Enter 0, 1, or 2) (0 being easiest and 2 being hardest)");
