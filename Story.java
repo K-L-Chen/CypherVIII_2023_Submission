@@ -27,6 +27,11 @@ public class Story
         Continue();
         System.out.println("Please enter your difficulty. (Enter 0, 1, or 2) (0 being easiest and 2 being hardest)");
         String dif = in.nextLine();
+        while(dif.equals(""))
+        {
+            System.out.println("Please enter your difficulty. (Enter 0, 1, or 2) (0 being easiest and 2 being hardest)");
+            dif = in.nextLine();
+        }
         int difficulty = Integer.parseInt(dif);
         System.out.println("Greetings Student "+ randomnumber);
         System.out.println("Please enter your name");
@@ -43,7 +48,7 @@ public class Story
         System.out.println("Resident Life: Hello " + name + "!");
         Continue();
         System.out.println("Resident Life: Are you ready to move in to campus? (Y/N)");
-        String nothing = in.nextLine();
+        in.nextLine();
         System.out.println("Resident Life: Too Bad!");
         Continue();
         System.out.println("Resident Life: Dear name, ");
