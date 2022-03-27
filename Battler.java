@@ -12,11 +12,11 @@ public class Battler {
     public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
         this.player = player_to_set;
         this.enemy_list = enemy_to_set; 
-        this.say_lines.add("\n That's gonna be my room! \n");
-        this.say_lines.add("\n I'll even sleep in GGV at this point, actually nevermind... \n");
-        this.say_lines.add("\n *Pushes Glasses Up \n");
-        this.say_lines.add("\n I didn't climb this far to fall off now! \n");
-        this.say_lines.add("\n My room, my rules! \n"); 
+        this.say_lines.add("\nThat's gonna be my room! \n");
+        this.say_lines.add("\nI'll even sleep in GGV at this point, actually nevermind... \n");
+        this.say_lines.add("\n*Pushes Glasses Up \n");
+        this.say_lines.add("\nI didn't climb this far to fall off now! \n");
+        this.say_lines.add("\nMy room, my rules! \n"); 
         this.start_battle(in);
     }
      
@@ -24,7 +24,12 @@ public class Battler {
       * Show the stats of all non-defeated characters
       */
      private void showStats(){
-        System.out.print(this.player);
+        System.out.print(player + "\n");
+        for(Enemy enemy : enemy_list){
+           if(!enemy.checkDefeated()){
+              System.out.println(enemy + "\n");
+           }
+        }
      }
      
      /**
@@ -139,6 +144,7 @@ public class Battler {
            }
            enemyActionSequence();
            int line_to_say = speech_ran.nextInt(4);
+
            System.out.print(say_lines.get(line_to_say));
            Continue();
            if (player.checkDefeated()){

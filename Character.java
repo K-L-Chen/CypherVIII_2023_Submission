@@ -132,6 +132,7 @@ public class Character {
    {
       int damage = damageRange(this.attack, other.getDefense());  //Formula sourced from: http://rpg.wikia.com/wiki/Damage_Formula
       
+      System.out.print(damage);
       other.changeToHP(damage);
       if(other.getHP() <= 0){
          other.isNowDefeated();
