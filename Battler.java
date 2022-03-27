@@ -30,10 +30,10 @@ public class Battler {
       * Show the stats of all non-defeated characters
       */
      private void showStats(){
-        System.out.print(player + "\n");
+        System.out.print("Your stats:\n" + player + "\n");
         for(Enemy enemy : enemy_list){
            if(!enemy.checkDefeated()){
-              System.out.println(enemy + "\n");
+              System.out.println("Enemy stats:\n" + enemy + "\n");
            }
         }
      }
