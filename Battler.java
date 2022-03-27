@@ -152,19 +152,21 @@ public class Battler {
               Continue();
               gamePlaying = false;
            }
-           boolean switch_to_over = true;
-           for(Enemy enemy : enemy_list ){
-              if(!enemy.checkDefeated()){
+           else{
+             boolean switch_to_over = true;
+             for(Enemy enemy : enemy_list ){
+               if(!enemy.checkDefeated()){
                  switch_to_over = false;
                  break;
-              }
-              if(switch_to_over){
-                System.out.println(player.getName() + " Wins!");
-                Continue();
-              }
+               }
+             }
+             if(switch_to_over){
+               System.out.println(player.getName() + " Wins!");
+               Continue();
+             }
+             gamePlaying = !switch_to_over;
            }
-           gamePlaying = !switch_to_over;
-           }
+         }
         }
 
         private void Continue() //Press Enter to continue text
