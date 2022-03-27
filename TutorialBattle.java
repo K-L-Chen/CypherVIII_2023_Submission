@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TutorialBattle extends Battler{
@@ -6,16 +5,17 @@ public class TutorialBattle extends Battler{
     //ArrayList<Enemy> enemy_list = new ArrayList<Enemy>();
     //Scanner in;
 
-    public TutorialBattle(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
-        //super(player_to_set, enemy_to_set, in);
+    public TutorialBattle(Character player_to_set, Scanner in){
+        super(player_to_set);
         //this.player = player_to_set;
         //this.enemy_list = enemy_to_set;
-        super.say_lines = new ArrayList<String>();
-        super.say_lines.add("Prepare to be executed!");
-        super.say_lines.add("Time for a throw down!");
-        super.say_lines.add("*Computer Science Major attempts to explain why Python is superior to Java. He's wrong.*");
-        super.say_lines.add("Fine, I'll commit my all to this!");
-        super.say_lines.add("No exceptions!");
-        super.start_battle(in);
+        //super.say_lines = new ArrayList<String>();
+        this.enemy_list.add(new TutorialBoss());
+        this.say_lines.add("\nPrepare to be executed!\n");
+        this.say_lines.add("\nTime for a throw down!\n");
+        this.say_lines.add("\n*Computer Science Major attempts to explain why Python is superior to Java. He's wrong.*\n");
+        this.say_lines.add("\nFine, I'll commit my all to this!\n");
+        this.say_lines.add("\nNo exceptions!\n");
+        this.start_battle(in);
     }
 }

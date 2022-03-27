@@ -80,9 +80,8 @@ public class Story
         System.out.println("*The Computer Science Major lunges at you to attack!*");
         Continue();
         //Tutorial battle trigger here
-        ArrayList<Enemy> tutorial = new ArrayList<Enemy>();
-        tutorial.add(new TutorialBoss());
-        battler = new TutorialBattle(character, tutorial, in);
+
+        battler = new TutorialBattle(character, in);
         if(!battler.winning){
             //LOOSING MESSAGE
             System.out.println("A loss befalls you... and a cardboard box awaits.");
@@ -141,10 +140,8 @@ public class Story
         Continue();
         System.out.println("Former Roommate: What I'm saying is there is only one single left. AND IT WILL BE MINE!");
         //Roommate battle trigger here
-        ArrayList<Enemy> roommate = new ArrayList<Enemy>();
-        roommate.add(new Roommate(difficulty));
 
-        battler = new RoommateBoss(character, roommate, in);
+        battler = new RoommateBoss(character, difficulty, in);
         if(!battler.winning){
             //LOOSING MESSAGE
             System.out.println("A loss befalls you... and a cardboard box awaits.");
@@ -175,10 +172,7 @@ public class Story
         System.out.println("Residence Life: Then prove you self and make me.");
         //Final Boss Trigger here
 
-        ArrayList<Enemy> reslife = new ArrayList<Enemy>();
-        reslife.add(new ResLife(difficulty));
-
-        battler = new ResLifeBoss(character, reslife, in);
+        battler = new ResLifeBoss(character, difficulty, in);
         if(!battler.winning){
             //LOOSING MESSAGE
             System.out.println("A loss befalls you... and a cardboard box awaits.");

@@ -10,6 +10,11 @@ public class Battler {
     Random speech_ran = new Random();
     boolean winning = true;
 
+    public Battler(Character player_to_set){//}, Scanner in){
+         this.player = player_to_set;
+         //this.start_battle(in);
+    }
+
     public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
         this.player = player_to_set;
         this.enemy_list = enemy_to_set; 
