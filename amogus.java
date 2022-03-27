@@ -7,9 +7,10 @@ import java.io.IOException;
 
 public class amogus {
     static JLabel jLabel = new JLabel();
-    public static void main(String[] args) throws IOException {
 
-        File file = new File("images/bruh.png");
+    public void sus() throws IOException {
+
+        File file = new File("images/amogus.png");
         BufferedImage bufferedImage = ImageIO.read(file);
 
         ImageIcon imageIcon = new ImageIcon(bufferedImage);
