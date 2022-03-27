@@ -36,10 +36,9 @@ public class amogus {
     //     }).start();
     //   }
 
-      public static void main(String[] args) throws IOException {
-        // playSound("amogus.wav");
+    public void sus() throws IOException {
 
-        File file = new File("images/bruh.png");
+        File file = new File("images/amogus.png");
         BufferedImage bufferedImage = ImageIO.read(file);
 
         ImageIcon imageIcon = new ImageIcon(bufferedImage);
