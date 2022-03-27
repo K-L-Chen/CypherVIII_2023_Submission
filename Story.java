@@ -86,6 +86,10 @@ public class Story
         Continue();
 
         battler = new Battler(character, createEnemies(3, difficulty), in);
+        if(battler.winning){
+            //LOOSING MESSAGE
+            return;
+        }
 
         System.out.println("*With the student defeat you move on to the second floor");
         Continue();
