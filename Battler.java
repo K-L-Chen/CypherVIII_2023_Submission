@@ -18,11 +18,11 @@ public class Battler {
     public Battler(Character player_to_set, ArrayList<Enemy> enemy_to_set, Scanner in){
         this.player = player_to_set;
         this.enemy_list = enemy_to_set; 
-        this.say_lines.add("\nThat's gonna be my room! \n");
-        this.say_lines.add("\nI'll even sleep in GGV at this point, actually nevermind... \n");
-        this.say_lines.add("\n*Pushes Glasses Up \n");
-        this.say_lines.add("\nI didn't climb this far to fall off now! \n");
-        this.say_lines.add("\nMy room, my rules! \n"); 
+        this.say_lines.add("\nRandom Student: That's gonna be my room! \n");
+        this.say_lines.add("\nRandom Student: I'll even sleep in GGV at this point, actually nevermind... \n");
+        this.say_lines.add("\n*Pushes Glasses Up* \n");
+        this.say_lines.add("\nRandom Student: I didn't climb this far to fall off now! \n");
+        this.say_lines.add("\nRandom Student: My room, my rules! \n"); 
         this.start_battle(in);
     }
      
