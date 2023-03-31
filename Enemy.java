@@ -10,13 +10,8 @@ public class Enemy extends Character {
         this.max_health = hp;
     }
 
-    public Enemy(int difficulty, int enemy_number){
+    public Enemy(int enemy_number){
         this();
-        this.hp <<= difficulty;
-        this.mp <<= difficulty;
-        this.attack <<= difficulty;
-        this.defense <<= difficulty;
-        this.special <<= difficulty;
         this.name = "Waitlisted Student " + enemy_number;
     }
     
@@ -26,6 +21,6 @@ public class Enemy extends Character {
     }
 
     public int damageRange(int atk, int enemyDef){
-        return (int)((atk/ (1000.0 /(1000 + enemyDef))) - (Math.random() * (difficulty+1)));
+        return (int)((atk/ (1000.0 /(1000 + enemyDef))) - (Math.random() * (1)));
    }
 }

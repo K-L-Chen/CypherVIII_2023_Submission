@@ -5,8 +5,7 @@ public class Character {
    protected int defense;
    protected int special;
    protected boolean defeated = false;
-   protected int difficulty = 0;
-
+   
    private int base_hp;
    private int base_mp;
    private int base_attack;
@@ -42,7 +41,7 @@ public class Character {
    //set difficulty value for damage range
    public Character(int difficulty, String name){
        this(name);
-       this.difficulty = difficulty;
+       //this.difficulty = difficulty;
    }
 
    //specific character stats
@@ -121,7 +120,7 @@ public class Character {
    }
 
    public int damageRange(int atk, int enemyDef){
-        return (int)((atk/ (1000.0 /(1000 + enemyDef))) + (Math.random() * (difficulty+1)));
+        return (int)((atk/ (1000.0 /(1000 + enemyDef))) + (Math.random() * (1)));
    }
 
    /**

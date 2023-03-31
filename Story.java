@@ -105,7 +105,7 @@ public class Story
         System.out.println("Suddenly a group of students jumps out at you!");
         Continue();
 
-        battler = new Battler(character, createEnemies(3, difficulty), in);
+        battler = new Battler(character, createEnemies(3), in);
         if(!battler.winning){
             //LOOSING MESSAGE
             System.out.println("A loss befalls you... and a cardboard box awaits.");
@@ -123,7 +123,7 @@ public class Story
         Continue();
         //Normal battle trigger here
 
-        battler = new Battler(character, createEnemies(2, difficulty), in);
+        battler = new Battler(character, createEnemies(2), in);
         if(!battler.winning){
             //LOOSING MESSAGE
             System.out.println("A loss befalls you... and a cardboard box awaits.");
@@ -209,10 +209,10 @@ public class Story
         {}  
     }
 
-    private ArrayList<Enemy> createEnemies(int enemy_count, int difficulty){
+    private ArrayList<Enemy> createEnemies(int enemy_count){
         ArrayList<Enemy> enemy_list = new ArrayList<Enemy>();
         for(int i=0; i<enemy_count; i++){
-            enemy_list.add(new Enemy(difficulty, rand_gen.nextInt(100)));
+            enemy_list.add(new Enemy(rand_gen.nextInt(100)));
         }
         return enemy_list;
     }
