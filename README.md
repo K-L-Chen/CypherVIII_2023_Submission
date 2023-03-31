@@ -1,6 +1,6 @@
 # CypherVII_2022_Submission
 
-[H O U S I N G R O Y A L E]
+[H O U S I N G R O Y A L E 2]
 
 RPG Battle System to make it to the top of the Wren Building and get off the waitlist!
 
