@@ -176,14 +176,17 @@ public class Drop extends ApplicationAdapter {
     		  this.playerclass = new KeyboardWarrior(10,10,10,10);
     		  System.out.print("Class Changed");
     		  in_choice = false;
+    		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) {
     		  this.playerclass = new CompSciMageor(10,10,10,10);
     		  in_choice = false;
+    		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
     		  this.playerclass = new CompSciMageor(10,10,10,10);
     		  in_choice = false;
+    		  updateMSG();
     	  }
       }
       
