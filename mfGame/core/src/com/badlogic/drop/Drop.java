@@ -72,6 +72,7 @@ public class Drop extends ApplicationAdapter {
 	  texture = new Texture(Gdx.files.internal("textbox.png"));
 	  backgroundSprite =new Sprite(texture);
 	  
+	  mechaResLife = new Music(Gdx.files.internal("reslifemechboss.wav"));
 	  message = "hello";
 	  
       // load the drop sound effect and the rain background "music"
