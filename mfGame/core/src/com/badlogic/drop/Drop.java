@@ -74,6 +74,7 @@ public class Drop extends ApplicationAdapter {
    private boolean in_combat = false;
    private boolean in_choice = false;
    private int iter = 0;
+   private boolean boss_fight = false;
    
    public void renderBackground() {
        backgroundSprite.draw(spriteBatch);
@@ -169,6 +170,13 @@ public class Drop extends ApplicationAdapter {
       else if(in_combat) {
     	  //setup combat sequence thing
     	  combatMSG();
+    	  //win combat sequence for debugging
+    	  if(Gdx.input.isKeyPressed(Keys.L)) {
+    		  in_combat = false;
+    		  updateMSG();
+    	  }
+    	  //insert call to battle classes here:
+    	  
       }
       else if(in_choice) { 
     	  choiceMSG();
@@ -180,11 +188,13 @@ public class Drop extends ApplicationAdapter {
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) {
     		  this.playerclass = new CompSciMageor(10,10,10,10);
+    		  System.out.print("Class Changed");
     		  in_choice = false;
     		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
     		  this.playerclass = new CompSciMageor(10,10,10,10);
+    		  System.out.print("Class Changed");
     		  in_choice = false;
     		  updateMSG();
     	  }

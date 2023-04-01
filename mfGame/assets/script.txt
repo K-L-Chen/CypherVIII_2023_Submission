@@ -5,20 +5,119 @@ an On-Campus dorm room.
 The rest of your year
 went normally until it came 
 time to apply for a
-Housing contract for next year�
+Housing contract for next year�
 Res Life: Yeah, we are 
 demolishing like all the buildings
 Impossible! you think.
 How will they ever have enough 
 room for all the students if 
 they close down multiple dorms?
-Residence Life: Oh, We won�t.
-Which means�
-IT�S TIME FOR A HOUSING ROYALE!
+Residence Life: Oh, We won�t.
+Which means�
+IT�S TIME FOR A HOUSING ROYALE!
 2
 choice 
 
+Entrance to the Wren Building:
 
+Once again, you must make your way
+to Resident’s Life and get a room
+for next year. 
+
+Res Life can only be found on
+the top floor of the Wren building,
+but be warned. 
+
+Only a select few can live in the
+limited number of dorms on campus,
+and there will be those who
+will try to stop you.
+It is a Housing Royale (2) after all.
+
+As you make your way to the
+Wren building, it is quiet.
+Too quiet.
+
+As you enter through the massive double
+doors of the ancient building,
+you see nothing but dust
+and the stairs leading to your goal.
+However, right as you start to
+make your way up the stairs,
+the doors slam shut behind you.
+
+No turning back now.
+
+Floor 1:
+
+As you make it to the top of the Stairs,
+there is someone waiting for you.
+Waitlisted Student:
+Only I will have an On-Campus Dorm!!!
+You:
+Wai..
+Waitlisted Student:
+HAVE AT YOU!
+Waitlisted Student Attacks!
+
+battle
+
+The Waitlisted Student collapses onto the floor.
+
+He must be very sleepy after that fight.
+
+You leave your former adversary to his nap
+and continue to the next floor.
+Floor 2:
+
+As you get to the top of the stairs,
+you are once again ambushed by two students.
+Waitlisted Student #1:
+The room will be ours!
+Waitlisted Student #2:
+We are in a roommate group!
+You:But I thought roommate groups
+were disbanded when you get on the waitlist?
+Waitlisted Student #1:
+…
+Waitlisted Student #2:
+…
+Waitlisted Student #1 and
+Waitlisted Student #2 Attack!
+battle
+
+Waitlisted Student #1 and #2:
+You’ll regret this!
+You’ll rue the day you
+crossed our roommate group!
+Waitlisted Student #1 and #2 both
+jump out of an open window.
+They'll probably be fine.
+
+You continue up to the final floor of the
+Wren building where Res life is waiting.
+Floor 3:
+
+You approach the door to Residence Life,
+
+the final confrontation. 
+
+However, before you can open the door
+you hear a voice from behind you. 
+“Hey Former Roomie.”
+
+It’s your former roommate!
+
+You:
+So you’ve come to stop me, and get your own stop instead!
+Former Roommate:
+No, I already have an apartment at Midtown.
+You:
+Then why are you here?
+Former Roommate:
+I came here just to laugh at you. 
+Former Roommate:
+HAHAHAHAHA!
 
 
 
