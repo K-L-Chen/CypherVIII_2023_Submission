@@ -1,6 +1,7 @@
 package com.badlogic.drop;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.Iterator;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -46,12 +47,16 @@ public class Drop extends ApplicationAdapter {
    private SpriteBatch spriteBatch;
    private String message;
    
-   float screenWidth = 1920;
-   float screenHeight = 1080;
+   final float screenWidth = 1920;
+   final float screenHeight = 1080;
    //inner box height and width
-   float[] ibWidth = new float[]{192,1728};
-   float[] ibHeight = new float[]{420,120};
+   final float[] ibWidth = new float[]{192,1728};
+   final float[] ibHeight = new float[]{420,120};
    //Label label;
+   
+   //flag for swapping between dialogue and combat sequences
+   private boolean in_combat = false;
+   private int iter = 0;
    
    public void renderBackground() {
        backgroundSprite.draw(spriteBatch);
@@ -130,7 +135,13 @@ public class Drop extends ApplicationAdapter {
       //font.draw(batch, "hello", swidth / 2, slength / 4, 0, 0, lastDropTime, 0, false);
       batch.end();
 
-
+      if(!in_combat && Gdx.input.isKeyPressed(Keys.SPACE)) {
+    	  updateMSG("update " + iter);
+    	  iter++;
+    	  long time = System.currentTimeMillis();
+    	  //spin
+    	  while(System.currentTimeMillis() < time + 250) {}
+      }
    }
 
    @Override
@@ -143,8 +154,8 @@ public class Drop extends ApplicationAdapter {
    }
    
    //read a textfile and grab the next group of output text
-   public String readTextFile(String textfile) {
-	   message = "";
+   public String updateMSG(String textfile) {
+	   message = textfile;
 	   return message;
    }
 }
