@@ -1,8 +1,8 @@
 package com.badlogic.drop.battlesystem;
 
-public class CompSciMageor extends Battler {
+public class OpenSourceBanbit extends Battler {
 	
-	public CompSciMageor(int hp, int mp) {
+	public OpenSourceBanbit(int hp, int mp) {
 		super(hp, mp);
 	}
 	

@@ -1,21 +1,51 @@
 package com.badlogic.drop.battlesystem;
 
-public class KeyboardWarrior extends Class{
+public class KeyboardWarrior extends Battler{
 	
-	public KeyboardWarrior(int hp, int mp, float defmult, float attmult) {
-		super(hp, mp, defmult, attmult);
-		this.skill1 = "Skill1 Name";
-		this.skill2 = "Skill2 Name";
-	}
-	
-	@Override 
-	public int skill1() {
-		return 0;
+	public KeyboardWarrior(int hp, int mp) {
+		super(hp, mp);
 	}
 	
 	@Override
-	public int skill2() {
-		return 0;
+	public void attack(Battler Other)
+	{
+		double totalmult = (this.attmult - Other.defmult)+1;
+		Other.hp = (int) (Other.hp - (100*totalmult));
+		if(Other.hp < 0)
+		{
+			Other.isDefeated = true;
+		}
+	}
+	
+	@Override 
+	public void skill1(Battler Other) {
+		if(this.mp < 20)
+		{
+			//Not enough MP
+		}
+		else
+		{
+			this.mp = this.mp-20;
+			double totalmult = (this.attmult - Other.defmult)+1;
+			Other.hp = (int) (Other.hp - (100*totalmult));
+			if(Other.hp < 0)
+			{
+				Other.isDefeated = true;
+			}
+		}
+	}
+	
+	@Override
+	public void skill2(Battler Other) {
+		if(this.mp < 10)
+		{
+			//Not Enough mp
+		}
+		else
+		{
+			this.attmult = this.attmult+0.5;
+			this.defmult = this.defmult-0.5;
+		}
 	}
 
 }
