@@ -31,6 +31,7 @@ import com.badlogic.drop.battlesystem.Class;
 import com.badlogic.drop.battlesystem.KeyboardWarrior;
 import com.badlogic.drop.battlesystem.CompSciMageor;
 
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -71,6 +72,7 @@ public class Drop extends ApplicationAdapter {
    
    //flag for swapping between dialogue and combat sequences
    private boolean in_combat = false;
+   private boolean in_choice = false;
    private int iter = 0;
    
    public void renderBackground() {
@@ -89,7 +91,7 @@ public class Drop extends ApplicationAdapter {
 	
 	  backgroundSprite =new Sprite(texture);
 	  mechaResLife = Gdx.audio.newSound(Gdx.files.internal("reslifemechboss.wav"));
-	  
+	 
 	  handle = Gdx.files.local("script.txt");
 	  reader = new BufferedReader(new InputStreamReader(handle.read()));
 	  
@@ -158,7 +160,7 @@ public class Drop extends ApplicationAdapter {
       //font.draw(batch, "hello", swidth / 2, slength / 4, 0, 0, lastDropTime, 0, false);
       batch.end();
       
-      if(!in_combat && Gdx.input.isKeyPressed(Keys.SPACE)) {
+      if(!in_combat && !in_choice && Gdx.input.isKeyPressed(Keys.SPACE)) {
     	  updateMSG();
     	  long time = System.currentTimeMillis();
     	  //spin
@@ -168,13 +170,24 @@ public class Drop extends ApplicationAdapter {
     	  //setup combat sequence thing
     	  combatMSG();
       }
+      else if(in_choice) { 
+    	  choiceMSG();
+    	  if(Gdx.input.isKeyPressed(Keys.NUM_1)) {
+    		  this.playerclass = new KeyboardWarrior(10,10,10,10);
+    		  System.out.print("Class Changed");
+    		  in_choice = false;
+    	  }
+    	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) {
+    		  this.playerclass = new CompSciMageor(10,10,10,10);
+    		  in_choice = false;
+    	  }
+    	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
+    		  this.playerclass = new CompSciMageor(10,10,10,10);
+    		  in_choice = false;
+    	  }
+      }
       
-      if(message.contains("null") && !in_combat) {
-    	  in_combat = true;
-      }
-      else if(message.contains("null") && in_combat) {
-    	  in_combat = false;
-      }
+	   
    }
 
    @Override
@@ -190,8 +203,20 @@ public class Drop extends ApplicationAdapter {
    public String updateMSG() {
 	   buf = new StringBuffer();
 	   try {
-           
+       
            message = reader.readLine() + "\n" + reader.readLine();
+           if(message.contains("battle"))
+           {
+         	 in_combat = true;
+         	 message = "";
+           }
+           else if(message.contains("choice"))
+           {
+         	 in_choice = true;
+         	 message  = "";
+           }
+          
+        	   
 	   }catch (Exception e) {
 		   e.printStackTrace();
 	   }
@@ -200,6 +225,11 @@ public class Drop extends ApplicationAdapter {
    
    public String combatMSG() {
 	   message = "MOVES (enter 1,2,3):\n\nATTACK  " + playerclass.getSkill1Name() + "  " + playerclass.getSkill2Name();
+	   return message;
+   }
+   
+   public String choiceMSG() {
+	   message = "Choose a Class (enter 1,2,3):\n1:KeyboardWarrior 3:OpenSourceBandit\n2:CompSciMageor\n";
 	   return message;
    }
 }
