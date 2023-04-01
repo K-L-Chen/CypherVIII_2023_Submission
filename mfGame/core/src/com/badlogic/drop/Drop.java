@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -27,6 +28,11 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Drop extends ApplicationAdapter {
    private Texture textboxImage;
    private Sound dropSound;
@@ -38,6 +44,9 @@ public class Drop extends ApplicationAdapter {
    private long lastDropTime;      
    private BitmapFont font;
    private Texture texture;
+   private StringBuffer buf;     
+   private FileHandle handle;
+   private BufferedReader reader;
    
    //top half of the screen
    private Texture bg;
@@ -72,7 +81,11 @@ public class Drop extends ApplicationAdapter {
 	  texture = new Texture(Gdx.files.internal("textbox.png"));
 	  backgroundSprite =new Sprite(texture);
 	  mechaResLife = Gdx.audio.newSound(Gdx.files.internal("reslifemechboss.wav"));
-	  message = "hello";
+	  
+	  handle = Gdx.files.local("script.txt");
+	  reader = new BufferedReader(new InputStreamReader(handle.read()));
+	  
+	  message = "Previous on Housing Royale…";
 	  
       // load the drop sound effect and the rain background "music"
       dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
@@ -134,14 +147,15 @@ public class Drop extends ApplicationAdapter {
       font.draw(batch, message, ibWidth[0], ibHeight[0]);
       //font.draw(batch, "hello", swidth / 2, slength / 4, 0, 0, lastDropTime, 0, false);
       batch.end();
-
+      
       if(!in_combat && Gdx.input.isKeyPressed(Keys.SPACE)) {
-    	  updateMSG("update " + iter);
-    	  iter++;
+    	  updateMSG();
     	  long time = System.currentTimeMillis();
     	  //spin
     	  while(System.currentTimeMillis() < time + 250) {}
       }
+
+      
    }
 
    @Override
@@ -154,8 +168,14 @@ public class Drop extends ApplicationAdapter {
    }
    
    //read a textfile and grab the next group of output text
-   public String updateMSG(String textfile) {
-	   message = textfile;
+   public String updateMSG() {
+	   buf = new StringBuffer();
+	   try {
+           
+           message = reader.readLine();
+	   }catch (Exception e) {
+		   e.printStackTrace();
+	   }
 	   return message;
    }
 }
