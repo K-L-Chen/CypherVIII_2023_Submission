@@ -56,14 +56,15 @@ public class Drop extends ApplicationAdapter {
 	  texture = new Texture(Gdx.files.internal("textbox.png"));
 	  backgroundSprite =new Sprite(texture);
 	  
+	  message = "hello";
 	  
       // load the drop sound effect and the rain background "music"
       dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
       rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
 
       // start the playback of the background music immediately
-      rainMusic.setLooping(true);
-      rainMusic.play();
+      //rainMusic.setLooping(true);
+      //rainMusic.play();
 
       // create the camera and the SpriteBatch
       camera = new OrthographicCamera();
@@ -96,10 +97,10 @@ public class Drop extends ApplicationAdapter {
       LabelStyle style = new LabelStyle();
       style.font = font;
       style.fontColor = Color.RED;
-      message = "hello";
       
       style.background = new TextureRegionDrawable(new TextureRegion(texture));;
       Label label = new Label(message, style);
+      label.setStyle(style);
       
       // tell the SpriteBatch to render in the
       // coordinate system specified by the camera.
@@ -107,12 +108,12 @@ public class Drop extends ApplicationAdapter {
       //font.getData().scale(1);
       
       // begin a new batch and draw the bucket and
-      // all drops
+      // all drops	
       batch.begin();
-      batch.draw(texture, 0, 0, swidth, slength / 3); //1920, 540
+      batch.draw(texture, 0, 0, screenWidth, screenHeight / 2);//swidth, slength / 3); //1920, 540
       //font.getData().scale(20);
       font.setColor(Color.ORANGE);
-      font.draw(batch, message, 250, 250);
+      font.draw(batch, message, 5, slength / 4);
       //font.draw(batch, "hello", swidth / 2, slength / 4, 0, 0, lastDropTime, 0, false);
       batch.end();
 
