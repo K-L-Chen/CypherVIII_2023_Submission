@@ -172,7 +172,7 @@ public class Drop extends ApplicationAdapter {
 	   buf = new StringBuffer();
 	   try {
            
-           message = reader.readLine();
+           message = reader.readLine() + "\n" + reader.readLine();
 	   }catch (Exception e) {
 		   e.printStackTrace();
 	   }
