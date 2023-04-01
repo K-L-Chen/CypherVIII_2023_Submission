@@ -58,6 +58,7 @@ public class Drop extends ApplicationAdapter {
    private Sprite backgroundSprite;
    private SpriteBatch spriteBatch;
    private String message;
+   public static Texture backgroundTexture;
    
    private Class playerclass;
    
@@ -84,6 +85,8 @@ public class Drop extends ApplicationAdapter {
 	  font.getData().scale(5); //4,5 is good size
 	  
 	  texture = new Texture(Gdx.files.internal("textbox.png"));
+	  backgroundTexture = new Texture(Gdx.files.internal("rizlife.jpg"));
+	
 	  backgroundSprite =new Sprite(texture);
 	  mechaResLife = Gdx.audio.newSound(Gdx.files.internal("reslifemechboss.wav"));
 	  
@@ -146,6 +149,7 @@ public class Drop extends ApplicationAdapter {
       // begin a new batch and draw the bucket and
       // all drops	
       batch.begin();
+      batch.draw(backgroundTexture, 0 , 0, screenWidth, screenHeight);
       batch.draw(texture, 0, 0, screenWidth, screenHeight / 2);//swidth, slength / 3); //1920, 540
       //batch.addActor(label);
       //font.getData().scale(20);
