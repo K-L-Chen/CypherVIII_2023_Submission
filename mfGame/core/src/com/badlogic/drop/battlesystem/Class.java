@@ -1,28 +1,51 @@
 package com.badlogic.drop.battlesystem;
 
 public class Class {
-	private int hp;
-	private int mp;
-	private final int attack = 100; 
-	private final int defense = 100; 
-	private float defmult;
-	private float attmult;
+	public int hp;
+	public int maxhp;
+	public int mp;
+	public int maxmp;
+	public final int attack = 100; 
+	public final int defense = 100; 
+	public double defmult;
+	public double attmult;
+	public boolean isDefeated;
 	
-	public Class(int hp, int mp, float defmult, float attmult) {
+	public Class(int hp, int mp) {
 		this.hp = hp;
+		this.maxhp = hp;
 		this.mp = mp;
-		this.defmult = defmult;
-		this.attmult = attmult;
+		this.maxmp = mp;
+		this.defmult = 1;
+		this.attmult = 1;
+		this.isDefeated = false;
 	}
 	
-	public int skill1() {
+	public void attack(Class Other)
+	{
 		
-		return 0;
 	}
 	
-	public int skill2() {
+	public void skill1(Class Other) {
 		
-		return 0;
 	}
 	
+	public void skill2(Class Other) {
+		
+	}
+	
+	public boolean isDefeated()
+	{
+		return this.isDefeated;
+	}
+	
+	public void resetAttackMult()
+	{
+		this.attmult = 1;
+	}
+
+	public void resetDefMult()
+	{
+		this.defmult = 1;
+	}
 }
