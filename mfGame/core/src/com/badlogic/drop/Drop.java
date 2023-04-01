@@ -27,9 +27,10 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.badlogic.drop.battlesystem.Class;
+import com.badlogic.drop.battlesystem.Battler;
 import com.badlogic.drop.battlesystem.KeyboardWarrior;
 import com.badlogic.drop.battlesystem.CompSciMageor;
+import com.badlogic.drop.battlesystem.OpenSourceBanbit;
 
 
 import java.io.BufferedReader;
@@ -61,7 +62,7 @@ public class Drop extends ApplicationAdapter {
    private String message;
    public static Texture backgroundTexture;
    
-   private Class playerclass;
+   private Battler playerclass;
    
    final float screenWidth = 1920;
    final float screenHeight = 1080;
@@ -123,7 +124,7 @@ public class Drop extends ApplicationAdapter {
       //label = new Label(message, style);
       //label.setBounds(ibWidth[0], ibWidth[1], ibHeight[0], ibHeight[1]);
       //label.setFontScale(5f);
-      playerclass = new KeyboardWarrior(100,100,1,1);
+      playerclass = new KeyboardWarrior(100,100);
    }
 
    @Override
@@ -181,19 +182,19 @@ public class Drop extends ApplicationAdapter {
       else if(in_choice) { 
     	  choiceMSG();
     	  if(Gdx.input.isKeyPressed(Keys.NUM_1)) {
-    		  this.playerclass = new KeyboardWarrior(10,10,10,10);
+    		  this.playerclass = new KeyboardWarrior(10,10);
     		  System.out.print("Class Changed");
     		  in_choice = false;
     		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) {
-    		  this.playerclass = new CompSciMageor(10,10,10,10);
+    		  this.playerclass = new CompSciMageor(10,10);
     		  System.out.print("Class Changed");
     		  in_choice = false;
     		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
-    		  this.playerclass = new CompSciMageor(10,10,10,10);
+    		  this.playerclass = new CompSciMageor(10,10);
     		  System.out.print("Class Changed");
     		  in_choice = false;
     		  updateMSG();

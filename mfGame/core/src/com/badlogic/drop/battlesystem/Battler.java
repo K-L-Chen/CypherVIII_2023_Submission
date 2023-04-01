@@ -1,15 +1,15 @@
 package com.badlogic.drop.battlesystem;
 
 public class Battler {
-	public float curHp;
-	public float maxHp;
-	public float curMp;
-	public float maxMp; 
-	public float  defenceMult;
-	public float attackMult;
+	public int curHp;
+	public int maxHp;
+	public int curMp;
+	public int maxMp; 
+	public double  defenceMult;
+	public double attackMult;
 	public boolean isDefeated;
 	
-	public Battler(float hp, float mp) {
+	public Battler(int hp, int mp) {
 		maxHp = curHp = hp;
 		maxMp = curMp = mp;
 		defenceMult = 0;
@@ -29,8 +29,8 @@ public class Battler {
 	
 	public void damageOpponent(Battler opponent, float attackValue) {
 		System.out.println("OPPONENT HP BEFORE: " + opponent.curHp);
-		float attackDamage = (attackMult - defenceMult) * attackValue;
-		opponent.curHp = opponent.curHp -  attackDamage;
+		double attackDamage = (attackMult - defenceMult) * attackValue;
+		opponent.curHp = (int) (opponent.curHp -  attackDamage);
 		System.out.println("OPPONENT HP AFTER: " + opponent.curHp);
 	}
 	
@@ -61,5 +61,16 @@ public class Battler {
 	public void resetDefMult()
 	{
 		defenceMult = 1;
+	}
+	
+	public String getSkill1Name()
+	{
+		return null;
+		
+	}
+	public String getSkill2Name()
+	{
+		return null;
+		
 	}
 }
