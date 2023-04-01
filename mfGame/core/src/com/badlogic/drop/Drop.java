@@ -27,6 +27,9 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.drop.battlesystem.Class;
+import com.badlogic.drop.battlesystem.KeyboardWarrior;
+import com.badlogic.drop.battlesystem.CompSciMageor;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -55,6 +58,8 @@ public class Drop extends ApplicationAdapter {
    private Sprite backgroundSprite;
    private SpriteBatch spriteBatch;
    private String message;
+   
+   private Class playerclass;
    
    final float screenWidth = 1920;
    final float screenHeight = 1080;
@@ -85,7 +90,7 @@ public class Drop extends ApplicationAdapter {
 	  handle = Gdx.files.local("script.txt");
 	  reader = new BufferedReader(new InputStreamReader(handle.read()));
 	  
-	  message = "Previous on Housing Royale…";
+	  message = "Previous on Housing Royale";
 	  
       // load the drop sound effect and the rain background "music"
       dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
@@ -112,6 +117,7 @@ public class Drop extends ApplicationAdapter {
       //label = new Label(message, style);
       //label.setBounds(ibWidth[0], ibWidth[1], ibHeight[0], ibHeight[1]);
       //label.setFontScale(5f);
+      playerclass = new KeyboardWarrior(100,100,1,1);
    }
 
    @Override
@@ -154,8 +160,17 @@ public class Drop extends ApplicationAdapter {
     	  //spin
     	  while(System.currentTimeMillis() < time + 250) {}
       }
-
+      else if(in_combat) {
+    	  //setup combat sequence thing
+    	  combatMSG();
+      }
       
+      if(message.contains("null") && !in_combat) {
+    	  in_combat = true;
+      }
+      else if(message.contains("null") && in_combat) {
+    	  in_combat = false;
+      }
    }
 
    @Override
@@ -176,6 +191,11 @@ public class Drop extends ApplicationAdapter {
 	   }catch (Exception e) {
 		   e.printStackTrace();
 	   }
+	   return message;
+   }
+   
+   public String combatMSG() {
+	   message = "MOVES (enter 1,2,3):\n\nATTACK  " + playerclass.getSkill1Name() + "  " + playerclass.getSkill2Name();
 	   return message;
    }
 }

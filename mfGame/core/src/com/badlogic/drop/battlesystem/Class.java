@@ -1,12 +1,14 @@
 package com.badlogic.drop.battlesystem;
 
 public class Class {
-	private int hp;
-	private int mp;
-	private final int attack = 100; 
-	private final int defense = 100; 
-	private float defmult;
-	private float attmult;
+	protected int hp;
+	protected int mp;
+	protected final int attack = 100; 
+	protected final int defense = 100; 
+	protected float defmult;
+	protected float attmult;
+	protected String skill1;
+	protected String skill2;
 	
 	public Class(int hp, int mp, float defmult, float attmult) {
 		this.hp = hp;
@@ -25,4 +27,11 @@ public class Class {
 		return 0;
 	}
 	
+	public String getSkill1Name() {
+		return skill1;
+	}
+	
+	public String getSkill2Name() {
+		return skill2;
+	}
 }

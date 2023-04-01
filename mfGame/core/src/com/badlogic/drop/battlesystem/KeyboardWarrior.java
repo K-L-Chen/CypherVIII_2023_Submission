@@ -4,6 +4,8 @@ public class KeyboardWarrior extends Class{
 	
 	public KeyboardWarrior(int hp, int mp, float defmult, float attmult) {
 		super(hp, mp, defmult, attmult);
+		this.skill1 = "Skill1 Name";
+		this.skill2 = "Skill2 Name";
 	}
 	
 	@Override 
