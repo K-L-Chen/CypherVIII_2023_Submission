@@ -13,16 +13,18 @@ public class Battle {
 	int battlenum = 0;
 	public Battler enemy = null;
 	public Battler enemy2 = null;
+	
 	public Battle(Battler player, int battlenumber, Battler Enemy) {
 		this.player = player;
 		this.battlenum = battlenumber;
-		this.enemy = Enemy;
+		enemy = Enemy;
 	}
 	public Battle(Battler player, int battlenumber, Battler Enemy, Battler Enemy2) {
 		this.player = player;
 		this.battlenum = battlenumber;
-		this.enemy = Enemy;
-		this.enemy2 = Enemy2;
+		enemy = Enemy;
+		enemy2 = Enemy2;
+		//System.out.println((this.enemy==null)+ "    "+(this.enemy2==null));
 	}
 	public ArrayList<Battler> getPlayerAction(int action, int target) 
 	{

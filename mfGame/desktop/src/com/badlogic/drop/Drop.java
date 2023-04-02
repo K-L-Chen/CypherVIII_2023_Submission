@@ -257,11 +257,10 @@ public class Drop extends ApplicationAdapter {
 	    	  }
 	    	  else
 	    	  {
-		    	  if(iter == 2) 
+		    	  /*if(iter == 2) 
 		    	  {
 		    		  TargetMessage();
 			    	  int target = 0;
-			    	  
 			    	  if (!target_select)
 			    	  {
 			    		  if(Gdx.input.isKeyPressed(Keys.NUM_1)) 
@@ -292,10 +291,12 @@ public class Drop extends ApplicationAdapter {
 						  if(target == 1)
 						  {
 							  Secondenemy1 = entities.get(1);
+							  //target_select = false;
 						  }
 						  else if(target == 2)
 						  {
 							  Secondenemy2 = entities.get(1);
+							  //target_select = false;
 						  }
 						  e1_isDead = Secondenemy1.isDefeated();
 						  e2_isDead = Secondenemy2.isDefeated();
@@ -322,15 +323,14 @@ public class Drop extends ApplicationAdapter {
 						  }
 						  
 						  action_select = false;
-						  target_select = false;
-				    	  //long time = System.currentTimeMillis();
+				    	  long time2 = System.currentTimeMillis();
 				    	  //spin
-				    	  //while(System.currentTimeMillis() < time + 250) {}
+				    	  while(System.currentTimeMillis() < time2 + 250) {}
 			    	  }
 					  
-				  }
-				  else
-				  {
+				  }*/
+				  //else
+				  //{
 					  entities = curBattle.getPlayerAction(action, 0);
 					  if(!entities.get(1).isDefeated()) 
 					  {
@@ -345,6 +345,9 @@ public class Drop extends ApplicationAdapter {
 					  if(iter == 1)
 					  {
 						  FirstEnemy = entities.get(1);
+					  }
+					  else if(iter == 2) {
+						  Secondenemy1 = entities.get(1);
 					  }
 					  else if(iter == 3)
 					  {
@@ -364,19 +367,22 @@ public class Drop extends ApplicationAdapter {
 					  {
 						  EnemyHp(FirstEnemy.curHp);
 					  }
+					  else if(iter == 2) {
+						  EnemyHp(Secondenemy1.curHp);
+					  }
 					  else if(iter == 3)
 					  {
 						  EnemyHp(reslife.curHp);
 					  }
 					  action_select = false;
-			    	  long time = System.currentTimeMillis();
+			    	  long time3 = System.currentTimeMillis();
 			    	  //spin
-			    	  while(System.currentTimeMillis() < time + 250) {}
-				  }
+			    	  while(System.currentTimeMillis() < time3 + 250) {}
+				  //}
 	    	  }
-	    	  long time = System.currentTimeMillis();
+	    	  //long time = System.currentTimeMillis();
 	    	  //spin
-	    	  while(System.currentTimeMillis() < time + 250) {}
+	    	  //while(System.currentTimeMillis() < time + 250) {}
     	  }
       }
       else if(in_choice) { 
@@ -423,6 +429,9 @@ public class Drop extends ApplicationAdapter {
 	   try {
        
            message = reader.readLine() + "\n" + reader.readLine();
+           if (message.contains("bye bye")){
+        	   System.exit(0);
+           }
            if(message.contains(".battle"))
            {
          	 in_combat = true;
@@ -437,7 +446,7 @@ public class Drop extends ApplicationAdapter {
          	 	case 1:
          	 		System.out.println("First fight.");
          	 		int type = (int)(Math.random() * 3f + 1f);
-         	 		FirstEnemy = null;
+         	 		FirstEnemy = new KeyboardWarrior(10,50);
          	 		switch(type) {
          	 			case 1:
          	 				FirstEnemy = new KeyboardWarrior(10,50);
@@ -454,7 +463,9 @@ public class Drop extends ApplicationAdapter {
          	 	case 2:
          	 		System.out.println("Second fight.");
          	 		int type1 = (int)(Math.random() * 3f + 1f);
-         	 		Battler Secondenemy1 = null;
+         	 		//default
+         	 		Secondenemy1 = new KeyboardWarrior(10,50);
+         	 		System.out.println(type1);
          	 		switch(type1) {
 	         	 		case 1:
 	         	 			Secondenemy1 = new KeyboardWarrior(10,50);
@@ -467,7 +478,8 @@ public class Drop extends ApplicationAdapter {
 	     	 				break;
          	 		}
          	 		type1 = (int)(Math.random() * 3 + 1);
-         	 		Battler Secondenemy2 = null;
+         	 		/*Secondenemy2 = new KeyboardWarrior(10,50);
+         	 		System.out.println(type1);
          	 		switch(type1) {
 	         	 		case 1:
 	         	 			Secondenemy2 = new KeyboardWarrior(10,50);
@@ -478,8 +490,8 @@ public class Drop extends ApplicationAdapter {
 	     	 			case 3:
 	     	 				Secondenemy2 = new OpenSourceBanbit(10,50);
 	     	 				break;
-         	 		}
-         	 		curBattle = new Battle(playerclass, iter, Secondenemy1, Secondenemy2);
+         	 		}*/
+         	 		curBattle = new Battle(playerclass, 1, Secondenemy1);//, Secondenemy2);
          	 		break;
          	 	case 3:
          	 		System.out.println("Boss fight.");
@@ -518,11 +530,17 @@ public class Drop extends ApplicationAdapter {
    public String EnemyHp(int hp1)
    {
 	   message = "The enemy has " + hp1 + "HP left.";
+	   long time = System.currentTimeMillis();
+ 	   //spin
+ 	   while(System.currentTimeMillis() < time + 500) {}
 	   return message;
    }
    public String TwoEnemyHp(int hp1,int hp2)
    {
 	   message = "The first enemy has " + hp1 + "HP left.\n The second enemy has "+ hp2 + "HP";
+	   long time = System.currentTimeMillis();
+ 	   //spin
+ 	   while(System.currentTimeMillis() < time + 500) {}
 	   return message;
    }
    public String choiceMSG() {

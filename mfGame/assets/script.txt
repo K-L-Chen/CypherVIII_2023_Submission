@@ -130,22 +130,22 @@ Former Roommate:
 I came here just to laugh at you. 
 Former Roommate:
 HAHAHAHAHA!
-Your former roommate then flings himself
-down the stairs and goes back to his
-"super cool"
-midtown apartment.
+Your former roommate then flings
+himself down the stairs and 
+goes back to his
+ 
+"super cool" midtown apartment.
 
-You:
-More like MIDtown. Ha. 
+You: More like MIDtown. Ha.
+
 You:
 ...
 You open the door to Residence Life,
 finally ready to get
 your On-Campus dorm room
 or die trying.
-
-Resident Living:
-
+Residence Gear:
+ 
 As you open the door,
 Res Life speaks to you.
 Res Life:
@@ -174,8 +174,6 @@ PREPARE TO BE WAITLISTED.
 
 PERMANENTLY.
 
-Mecha Res Life Attacks.
-
 .battle
 
 You:
@@ -194,3 +192,4 @@ To be continued
 
 Maybe?
  
+bye bye
