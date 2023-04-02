@@ -62,6 +62,8 @@ public class Drop extends ApplicationAdapter {
    private Texture robot;
    private Texture robot_ko;
    private Sound explosion;
+   private Rectangle enemy_wrap;
+   private Rectangle[] enemy_wrap_duo;
    
    //top half of the screen
    //private Texture bg;
@@ -92,9 +94,11 @@ public class Drop extends ApplicationAdapter {
    private Battler Secondenemy2 = null;
    private Battler reslife = new MechaResLife(100,50);
    
+   private long time_at_instance;
    private boolean player_isDead = false;
    private boolean action_select = false;
    private boolean target_select = false;
+   private boolean death_flag = false;
    public void renderBackground() {
        backgroundSprite.draw(spriteBatch);
    }
@@ -110,7 +114,12 @@ public class Drop extends ApplicationAdapter {
 	  backgroundTexture = new Texture(Gdx.files.internal("rizlife.jpg"));
 	
 	  backgroundSprite =new Sprite(texture);
-	  enemy = new Texture(Gdx.files.internal("Waitlisted.png"));
+	  enemy = new Texture(Gdx.files.internal("WaitlistedBIG.JPG"));
+	  enemy_wrap = new Rectangle();
+	  enemy_wrap.x = screenWidth / 2 - 200;
+	  enemy_wrap.y = screenHeight / 2 -75;
+	  enemy_wrap.width = 400;
+	  enemy_wrap.height = 200;
 	  enemy_ko = new Texture(Gdx.files.internal("Waitlisted2.png"));
 	  robot = new Texture(Gdx.files.internal("reslifemechaboss.png"));
 	  robot_ko = new Texture(Gdx.files.internal("png-transparent-red-and-brown-explosion-illustration-nuclear-explosion-mushroom-cloud-explosion-photography-explosion-digital-image.png"));
@@ -179,6 +188,18 @@ public class Drop extends ApplicationAdapter {
       batch.begin();
       batch.draw(backgroundTexture, 0 , 0, screenWidth, screenHeight);
       batch.draw(texture, 0, 0, screenWidth, screenHeight / 2);//swidth, slength / 3); //1920, 540
+      if(in_combat) {
+    	  switch(iter) {
+    	  case 1:
+    		  batch.draw(enemy, enemy_wrap.x, enemy_wrap.y);
+    		  break;
+    	  case 2:
+    		  batch.draw(enemy, enemy_wrap.x, enemy_wrap.y);
+    		  break;
+    	  case 3:
+    		  break;
+    	  }
+      }
       //batch.addActor(label);
       //font.getData().scale(20);
       font.setColor(Color.RED);
@@ -186,7 +207,13 @@ public class Drop extends ApplicationAdapter {
       //font.draw(batch, "hello", swidth / 2, slength / 4, 0, 0, lastDropTime, 0, false);
       batch.end();
       
-      if(!in_combat && !in_choice && Gdx.input.isKeyPressed(Keys.SPACE)) {
+      if(System.currentTimeMillis() < time_at_instance + 1000 && death_flag) {
+    	  batch.begin();
+    	  batch.draw(enemy_ko, enemy_wrap.x, enemy_wrap.y);
+    	  batch.end();
+      }
+      else if(!in_combat && !in_choice && Gdx.input.isKeyPressed(Keys.SPACE)) {
+    	  death_flag = false;
     	  updateMSG();
     	  long time = System.currentTimeMillis();
     	  //spin
@@ -530,17 +557,17 @@ public class Drop extends ApplicationAdapter {
    public String EnemyHp(int hp1)
    {
 	   message = "The enemy has " + hp1 + "HP left.";
-	   long time = System.currentTimeMillis();
- 	   //spin
- 	   while(System.currentTimeMillis() < time + 500) {}
+	   time_at_instance = System.currentTimeMillis();
+ 	   if(hp1 <= 0) {
+ 		   explosion.play();
+ 		   death_flag = true;
+ 	   }
 	   return message;
    }
    public String TwoEnemyHp(int hp1,int hp2)
    {
 	   message = "The first enemy has " + hp1 + "HP left.\n The second enemy has "+ hp2 + "HP";
-	   long time = System.currentTimeMillis();
- 	   //spin
- 	   while(System.currentTimeMillis() < time + 500) {}
+	   
 	   return message;
    }
    public String choiceMSG() {
