@@ -248,6 +248,9 @@ public class Drop extends ApplicationAdapter {
 	//    			  boolean e2_isDead = false;
 				  playerclass = entities.get(0);
 				  player_isDead = playerclass.curHp <= 0;
+				  for(int i = 0; i < entities.size(); i++) {
+					  entities.get(i).debug();
+				  }
 				  boolean e1_isDead = entities.get(1).curHp <= 0;
 				  boolean e2_isDead = entities.get(2).curHp <= 0;
 				  
@@ -262,6 +265,10 @@ public class Drop extends ApplicationAdapter {
 				  entities = curBattle.getPlayerAction(action, 0);
 				  if(!entities.get(1).isDefeated()) {
 					  entities = curBattle.EnemyAction(entities.get(1));
+				  }
+				  
+				  for(int i = 0; i < entities.size(); i++) {
+					  entities.get(i).debug();
 				  }
 				  
 				  playerclass = entities.get(0);
@@ -299,6 +306,9 @@ public class Drop extends ApplicationAdapter {
     		  in_choice = false;
     		  updateMSG();
     	  }
+    	  long time = System.currentTimeMillis();
+    	  //spin
+    	  while(System.currentTimeMillis() < time + 250) {}
       }
       
 	   
@@ -402,7 +412,7 @@ public class Drop extends ApplicationAdapter {
    }
    
    public String combatMSG() {
-	   message = "MOVES (enter 1,2,3)        HP:"+playerclass.curHp+"\n\nATTACK  " + playerclass.getSkill1Name() + "  " + playerclass.getSkill2Name();
+	   message = "MOVES (enter 1,2,3)      HP:"+playerclass.curHp+" MP:"+playerclass.curMp+"\n\nATTACK  " + playerclass.getSkill1Name() + "  " + playerclass.getSkill2Name();
 	   return message;
    }
    
