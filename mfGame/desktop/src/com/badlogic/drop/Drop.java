@@ -267,33 +267,38 @@ public class Drop extends ApplicationAdapter {
 			    		  if(Gdx.input.isKeyPressed(Keys.NUM_1)) 
 			    		  {
 			    			  target = 1;
-			    			  target_select = false;
+			    			  target_select = true;
 			    		  }
 			    		  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) 
 			    		  {
 			    			  target = 2;
-			    			  target_select = false;
+			    			  target_select = true;
 			    		  }
 			    	  }
 			    	  else
 			    	  {
 						  entities = curBattle.getPlayerAction(action, target);
-						  for(int i = 1; i < entities.size(); i++) 
-						  {
-							  if(!entities.get(i).isDefeated()) {
-								  entities = curBattle.EnemyAction(entities.get(i));
-							  }
+						  if(!entities.get(1).isDefeated()) {
+							  entities = curBattle.EnemyAction(entities.get(1));
 						  }
+						  boolean e1_isDead = false;
+						  boolean e2_isDead = false;
 						  
 						  playerclass = entities.get(0);
 						  player_isDead = playerclass.isDefeated();
 						  for(int i = 0; i < entities.size(); i++) {
 							  entities.get(i).debug();
 						  }
-						  Secondenemy1 = entities.get(1);
-						  Secondenemy2 = entities.get(2);
-						  boolean e1_isDead = entities.get(1).isDefeated();
-						  boolean e2_isDead = entities.get(2).isDefeated();
+						  if(target == 1)
+						  {
+							  Secondenemy1 = entities.get(1);
+						  }
+						  else if(target == 2)
+						  {
+							  Secondenemy2 = entities.get(1);
+						  }
+						  e1_isDead = Secondenemy1.isDefeated();
+						  e2_isDead = Secondenemy2.isDefeated();
 						  
 						  //curBattle.enemy.isDefeated = e1_isDead;
 						  //curBattle.enemy2.isDefeated = e2_isDead;
@@ -318,9 +323,9 @@ public class Drop extends ApplicationAdapter {
 						  
 						  action_select = false;
 						  target_select = false;
-				    	  long time = System.currentTimeMillis();
+				    	  //long time = System.currentTimeMillis();
 				    	  //spin
-				    	  while(System.currentTimeMillis() < time + 250) {}
+				    	  //while(System.currentTimeMillis() < time + 250) {}
 			    	  }
 					  
 				  }
@@ -378,19 +383,19 @@ public class Drop extends ApplicationAdapter {
     	  choiceMSG();
     	  if(Gdx.input.isKeyPressed(Keys.NUM_1)) {
     		  this.playerclass = new KeyboardWarrior(150,50);
-    		  System.out.print("Class Changed");
+    		  System.out.println("Class Changed");
     		  in_choice = false;
     		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) {
     		  this.playerclass = new CompSciMageor(100,150);
-    		  System.out.print("Class Changed");
+    		  System.out.println("Class Changed");
     		  in_choice = false;
     		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
     		  this.playerclass = new OpenSourceBanbit(100,50);
-    		  System.out.print("Class Changed");
+    		  System.out.println("Class Changed");
     		  in_choice = false;
     		  updateMSG();
     	  }
@@ -431,7 +436,7 @@ public class Drop extends ApplicationAdapter {
          	 switch(iter) {
          	 	case 1:
          	 		System.out.println("First fight.");
-         	 		int type = (int)(Math.random() * 3 + 1);
+         	 		int type = (int)(Math.random() * 3f + 1f);
          	 		FirstEnemy = null;
          	 		switch(type) {
          	 			case 1:
@@ -448,7 +453,7 @@ public class Drop extends ApplicationAdapter {
          	 		break;
          	 	case 2:
          	 		System.out.println("Second fight.");
-         	 		int type1 = (int)(Math.random() * 3 + 1);
+         	 		int type1 = (int)(Math.random() * 3f + 1f);
          	 		Battler Secondenemy1 = null;
          	 		switch(type1) {
 	         	 		case 1:
