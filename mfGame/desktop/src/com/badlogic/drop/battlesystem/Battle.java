@@ -24,29 +24,26 @@ public class Battle {
 		this.enemy = Enemy;
 		this.enemy = Enemy2;
 	}
-	public void getPlayerAction() {
-		
-		Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-	    System.out.println("Enter action of 1 through 3");
-	    int action = Integer.valueOf(scanner.nextLine());  // Read user input
-	    //System.out.println("Action was: " + action);  // Output user input
+	public Battler getPlayerAction(int action, int target) 
+	{
 	    if(battlenum == 2)
 	    {
-	    	System.out.println("Pick target 1 or 2");
-	    	int target = Integer.valueOf(scanner.nextLine());
 	    	if(target == 1)
 	    	{
 	    		if(action == 1)
 	    		{
 	    			player.attack(enemy);
+	    			return enemy;
 	    		}
 	    		else if(action == 2)
 	    		{
 	    			player.skill1(enemy);
+	    			return enemy;
 	    		}
 	    		else
 	    		{
 	    			player.skill2(enemy);
+	    			return enemy;
 	    		}
 	    			
 	    	}
@@ -55,14 +52,17 @@ public class Battle {
 	    		if(action == 1)
 	    		{
 	    			player.attack(enemy2);
+	    			return enemy;
 	    		}
 	    		else if(action == 2)
 	    		{
 	    			player.skill1(enemy2);
+	    			return enemy;
 	    		}
 	    		else
 	    		{
 	    			player.skill2(enemy2);
+	    			return enemy;
 	    		}
 	    			
 	    	}
@@ -72,32 +72,36 @@ public class Battle {
     		if(action == 1)
     		{
     			player.attack(enemy);
+    			return enemy;
     		}
     		else if(action == 2)
     		{
     			player.skill1(enemy);
+    			return enemy;
     		}
     		else
     		{
     			player.skill2(enemy);
+    			return enemy;
     		}
 	    }
-	    scanner.close();
 	}
-	public void EnemyAction(Battler curBattler) {
+	public Battler EnemyAction(Battler curEnemy) {
 		int randomAction = rand.nextInt(3);
-		switch(randomAction) {
+		switch(randomAction) 
+		{
 			
 		case 0:
-			curBattler.attack(player);
-			break;
+			curEnemy.attack(player);
+			return player;
 		case 1:
-			curBattler.skill1(player);
-			break;
+			curEnemy.skill1(player);
+			return player;
 		case 2:
-			curBattler.skill2(player);
-			break;
+			curEnemy.skill2(player);
+			return player;
 		}
+		return player;
 	}
 	
 	// Main method for testing purposes
