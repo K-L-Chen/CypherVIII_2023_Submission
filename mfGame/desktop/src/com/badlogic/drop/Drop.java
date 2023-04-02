@@ -97,7 +97,7 @@ public class Drop extends ApplicationAdapter {
 	  handle = Gdx.files.local("script.txt");
 	  reader = new BufferedReader(new InputStreamReader(handle.read()));
 	  
-	  message = "Previous on Housing Royale";
+	  message = "Previously on Housing Royale...";
 	  
       // load the drop sound effect and the rain background "music"
       dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));

@@ -5,23 +5,25 @@ an On-Campus dorm room.
 The rest of your year
 went normally until it came 
 time to apply for a
-Housing contract for next year�
+Housing contract for next year.
 Res Life: Yeah, we are 
 demolishing like all the buildings
 Impossible! you think.
 How will they ever have enough 
 room for all the students if 
 they close down multiple dorms?
-Residence Life: Oh, We won�t.
-Which means�
-IT�S TIME FOR A HOUSING ROYALE!
+Residence Life: Oh, We won't.
+Which means:
+IT'S TIME FOR A HOUSING ROYALE!
+
 2
+ 
 choice 
 
 Entrance to the Wren Building:
 
 Once again, you must make your way
-to Resident’s Life and get a room
+to Resident's Life and get a room
 for next year. 
 
 Res Life can only be found on
@@ -38,8 +40,8 @@ As you make your way to the
 Wren building, it is quiet.
 Too quiet.
 
-As you enter through the massive double
-doors of the ancient building,
+As you enter through the massive
+double doors of the ancient building,
 you see nothing but dust
 and the stairs leading to your goal.
 However, right as you start to
@@ -55,74 +57,146 @@ there is someone waiting for you.
 Waitlisted Student:
 Only I will have an On-Campus Dorm!!!
 You:
-Wai..
+Wait, we can talk this ou-
 Waitlisted Student:
 HAVE AT YOU!
 Waitlisted Student Attacks!
 
 battle
 
-The Waitlisted Student collapses onto the floor.
+The Waitlisted Student collapses
+onto the floor.
 
 He must be very sleepy after that fight.
-
-You leave your former adversary to his nap
-and continue to the next floor.
+You leave your former adversary to his
+nap and continue to the next floor.
 Floor 2:
 
 As you get to the top of the stairs,
-you are once again ambushed by two students.
+you are once again
+ambushed by two students.
+
 Waitlisted Student #1:
 The room will be ours!
 Waitlisted Student #2:
 We are in a roommate group!
-You:But I thought roommate groups
-were disbanded when you get on the waitlist?
+You:
+But I thought roommate groups
+were disbanded when you get put
+on the waitlist?
 Waitlisted Student #1:
-…
+...
 Waitlisted Student #2:
-…
+...
 Waitlisted Student #1 and
 Waitlisted Student #2 Attack!
 battle
 
 Waitlisted Student #1 and #2:
-You’ll regret this!
-You’ll rue the day you
+You'll regret this!
+You'll rue the day you
 crossed our roommate group!
 Waitlisted Student #1 and #2 both
 jump out of an open window.
-They'll probably be fine.
+They'll...
+probably be fine.
 
 You continue up to the final floor of the
 Wren building where Res life is waiting.
+
 Floor 3:
 
-You approach the door to Residence Life,
+You approach the door to Residence Life
 
-the final confrontation. 
+...the final confrontation. 
 
 However, before you can open the door
 you hear a voice from behind you. 
-“Hey Former Roomie.”
+"...Hey Former Roomie."
 
-It’s your former roommate!
+It's your former roommate!
 
 You:
-So you’ve come to stop me, and get your own stop instead!
+So you've come to stop me,
+and get your own room instead!
+
 Former Roommate:
-No, I already have an apartment at Midtown.
+No, I already have an apartment
+at Midtown.
+
 You:
-Then why are you here?
+...Then why are you here?
 Former Roommate:
 I came here just to laugh at you. 
 Former Roommate:
 HAHAHAHAHA!
+Your former roommate then flings himself
+down the stairs and goes back to his
+"super cool"
+midtown apartment.
 
+You:
+More like MIDtown. Ha. 
+You:
+...
+You open the door to Residence Life,
+finally ready to get
+your On-Campus dorm room
+or die trying.
 
+Resident Living:
 
+As you open the door,
+Res Life speaks to you.
 
+Res Life:
+Hello William and Mary student.
+Res Life:
+It is I, Residence Life itself.
+You:
+Res Life, I have come for my
+On-Campus dorm room!
 
+Res Life:
+I am sorry, but there are currently
+no rooms available.
 
+You:
+I have beat you before.
+I'll do it again!
 
+Res Life:
+Oh
+but have you beat THIS...
+(Mecha Res Life noise)
 
+noise
+
+Mecha Res Life:
+I AM MECHA RES LIFE.
+PREPARE TO BE WAITLISTED.
+
+PERMANENTLY.
+
+Mecha Res Life Attacks.
+
+bossbattle
+
+(Mecha Res life destroyed sound)
+
+You:
+Res Life, I have bested you.
+The room is mine.
+
+Mecha Res Life:
+ThAT yoU haVE. tHe RoOm iS yoUrs. 
+You:
+Sweet.
+Mecha? Res Life:
+For now.
+THE END
+
+To be continued
+
+Maybe?
+ 
