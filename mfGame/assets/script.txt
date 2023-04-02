@@ -62,7 +62,7 @@ Waitlisted Student:
 HAVE AT YOU!
 Waitlisted Student Attacks!
 
-battle
+.battle
 
 The Waitlisted Student collapses
 onto the floor.
@@ -90,7 +90,7 @@ Waitlisted Student #2:
 ...
 Waitlisted Student #1 and
 Waitlisted Student #2 Attack!
-battle
+.battle
 
 Waitlisted Student #1 and #2:
 You'll regret this!
@@ -148,7 +148,6 @@ Resident Living:
 
 As you open the door,
 Res Life speaks to you.
-
 Res Life:
 Hello William and Mary student.
 Res Life:
@@ -168,9 +167,6 @@ I'll do it again!
 Res Life:
 Oh
 but have you beat THIS...
-(Mecha Res Life noise)
-
-noise
 
 Mecha Res Life:
 I AM MECHA RES LIFE.
@@ -180,9 +176,7 @@ PERMANENTLY.
 
 Mecha Res Life Attacks.
 
-bossbattle
-
-(Mecha Res life destroyed sound)
+.battle
 
 You:
 Res Life, I have bested you.

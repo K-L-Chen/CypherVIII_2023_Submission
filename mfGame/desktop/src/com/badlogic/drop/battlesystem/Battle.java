@@ -11,8 +11,8 @@ public class Battle {
 	Battler player;
 	Random rand = new Random();
 	int battlenum = 0;
-	Battler enemy = null;
-	Battler enemy2 = null;
+	public Battler enemy = null;
+	public Battler enemy2 = null;
 	public Battle(Battler player, int battlenumber, Battler Enemy) {
 		this.player = player;
 		this.battlenum = battlenumber;
@@ -22,7 +22,7 @@ public class Battle {
 		this.player = player;
 		this.battlenum = battlenumber;
 		this.enemy = Enemy;
-		this.enemy = Enemy2;
+		this.enemy2 = Enemy2;
 	}
 	public ArrayList<Battler> getPlayerAction(int action, int target) 
 	{
