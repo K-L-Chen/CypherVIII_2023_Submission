@@ -194,7 +194,7 @@ public class Drop extends ApplicationAdapter {
     		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
-    		  this.playerclass = new CompSciMageor(10,10);
+    		  this.playerclass = new OpenSourceBanbit(10,10);
     		  System.out.print("Class Changed");
     		  in_choice = false;
     		  updateMSG();
@@ -238,7 +238,7 @@ public class Drop extends ApplicationAdapter {
    }
    
    public String combatMSG() {
-	   message = "MOVES (enter 1,2,3):\n\nATTACK  " + playerclass.getSkill1Name() + "  " + playerclass.getSkill2Name();
+	   message = "MOVES (enter 1,2,3):\n\n (1) ATTACK  (2)" + playerclass.getSkill1Name() + "10MP  (3)" + playerclass.getSkill2Name() +" 20MP";
 	   return message;
    }
    

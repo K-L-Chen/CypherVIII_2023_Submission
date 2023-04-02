@@ -1,8 +1,9 @@
 package com.badlogic.drop.battlesystem;
 
-public class KeyboardWarrior extends Battler{
+public class MechaResLife extends Battler{
+	private int count;
 	
-	public KeyboardWarrior(int hp, int mp) {
+	public MechaResLife(int hp, int mp) {
 		super(hp, mp);
 	}
 	
@@ -23,33 +24,25 @@ public class KeyboardWarrior extends Battler{
 	
 	@Override
 	public void skill1(Battler Other) {
-		if(this.curMp < 10)
-		{
-			//Not Enough mp
-		}
-		else
-		{
-			this.curMp = this.curMp-20;
-			this.attackMult = this.attackMult*1.2;
-			this.defenceMult = this.defenceMult/1.5;
-		}
+		this.attackMult = 1;
+		this.defenceMult = 1;
 	}
 	
 	@Override 
 	public void skill2(Battler Other) {
-		if(this.curMp < 20)
+		if(count > 4)
 		{
-			//Not enough MP
+			//Mecha Res life is out of beams
 		}
 		else
 		{
-			this.curMp = this.curMp-20;
+			upCount();
 			double totalmult = (this.attackMult - Other.defenceMult);
 			if(totalmult == 0)
 			{
 				totalmult = 0.1;
 			}
-			Other.curHp = (int) (Other.curHp - (20*totalmult));
+			Other.curHp = (int) (Other.curHp - (2*totalmult));
 			if(Other.curHp < 0)
 			{
 				Other.isDefeated = true;
@@ -60,14 +53,18 @@ public class KeyboardWarrior extends Battler{
 	@Override
 	public String getSkill1Name()
 	{
-		return "Rage";
+		return "Normalize";
 		
 	}
 	
 	@Override
 	public String getSkill2Name()
 	{
-		return "Keyboard Smash";
+		return "Res-Life Beam";
 		
+	}
+	private void upCount()
+	{
+		count = count+1;
 	}
 }
