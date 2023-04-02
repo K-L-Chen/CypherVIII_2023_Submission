@@ -9,70 +9,99 @@ import java.util.Scanner;
 public class Battle {
 	
 	Battler player;
-	ArrayList<Battler> opponents;
 	Random rand = new Random();
-	
-	public Battle(Battler player, ArrayList<Battler> opponents) {
+	int battlenum = 0;
+	Battler enemy = null;
+	Battler enemy2 = null;
+	public Battle(Battler player, int battlenumber, Battler Enemy) {
 		this.player = player;
-		this.opponents = opponents;
+		this.battlenum = battlenumber;
+		this.enemy = Enemy;
 	}
-	
+	public Battle(Battler player, int battlenumber, Battler Enemy, Battler Enemy2) {
+		this.player = player;
+		this.battlenum = battlenumber;
+		this.enemy = Enemy;
+		this.enemy = Enemy2;
+	}
 	public void getPlayerAction() {
 		
 		Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-	    System.out.println("Enter action of 0 through 3");
+	    System.out.println("Enter action of 1 through 3");
 	    int action = Integer.valueOf(scanner.nextLine());  // Read user input
-	    System.out.println("Action was: " + action);  // Output user input
-	    System.out.println("Pick target 0 through 1");
-	    int target = Integer.valueOf(scanner.nextLine());
-	    player.attack(opponents.get(target));
+	    //System.out.println("Action was: " + action);  // Output user input
+	    if(battlenum == 2)
+	    {
+	    	System.out.println("Pick target 1 or 2");
+	    	int target = Integer.valueOf(scanner.nextLine());
+	    	if(target == 1)
+	    	{
+	    		if(action == 1)
+	    		{
+	    			player.attack(enemy);
+	    		}
+	    		else if(action == 2)
+	    		{
+	    			player.skill1(enemy);
+	    		}
+	    		else
+	    		{
+	    			player.skill2(enemy);
+	    		}
+	    			
+	    	}
+	    	else
+	    	{
+	    		if(action == 1)
+	    		{
+	    			player.attack(enemy2);
+	    		}
+	    		else if(action == 2)
+	    		{
+	    			player.skill1(enemy2);
+	    		}
+	    		else
+	    		{
+	    			player.skill2(enemy2);
+	    		}
+	    			
+	    	}
+	    }
+	    else 
+	    {
+    		if(action == 1)
+    		{
+    			player.attack(enemy);
+    		}
+    		else if(action == 2)
+    		{
+    			player.skill1(enemy);
+    		}
+    		else
+    		{
+    			player.skill2(enemy);
+    		}
+	    }
 	    scanner.close();
 	}
-	public void takeAction(Battler curBattler) {
-		if(curBattler.equals(player)) {
-			getPlayerAction();
-		}
-		
-		// An additional check will need to be made for every buffing skill:
-		else {
-			int randomAction = rand.nextInt(3);
-			switch(randomAction) {
+	public void EnemyAction(Battler curBattler) {
+		int randomAction = rand.nextInt(3);
+		switch(randomAction) {
 			
-			case 0:
-				curBattler.attack(player);
-				break;
-			case 1:
-				curBattler.skill1(player);
-				break;
-			case 2:
-				curBattler.skill2(player);
-				break;
-			}
+		case 0:
+			curBattler.attack(player);
+			break;
+		case 1:
+			curBattler.skill1(player);
+			break;
+		case 2:
+			curBattler.skill2(player);
+			break;
 		}
 	}
 	
 	// Main method for testing purposes
 	public static void main(String[] args) {
-		Battler player = new Battler(100, 100);
-		Battler opp1 = new Battler(100, 100);
-//		Battler opp2 = new Battler(10, 10);
-		ArrayList<Battler> opponents = new ArrayList<>();
-		opponents.add(opp1);
-//		opponents.add(opp2);
-		Battle curBattle = new Battle(player,opponents);
-	    
-		System.out.println("Player debug:");
-		player.debug();
-		System.out.println("Opponent debug:");
-		opp1.debug();
-	    curBattle.takeAction(player);
-	    opp1.debug();
-    	for(Battler opponent : opponents) {
-    		System.out.println("Opponent debug:");
-    		opponent.debug();
-    		curBattle.takeAction(opponent);
-    		
-    	}
-	    
+
 	}
 }
