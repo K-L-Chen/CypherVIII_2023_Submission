@@ -27,6 +27,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.drop.battlesystem.Battle;
 import com.badlogic.drop.battlesystem.Battler;
 import com.badlogic.drop.battlesystem.KeyboardWarrior;
 import com.badlogic.drop.battlesystem.CompSciMageor;
@@ -76,6 +77,7 @@ public class Drop extends ApplicationAdapter {
    private boolean in_choice = false;
    private int iter = 0;
    private boolean boss_fight = false;
+   private Battle curBattle;
    
    public void renderBackground() {
        backgroundSprite.draw(spriteBatch);
@@ -177,7 +179,10 @@ public class Drop extends ApplicationAdapter {
     		  updateMSG();
     	  }
     	  //insert call to battle classes here:
-    	  
+    	  	
+    	  long time = System.currentTimeMillis();
+    	  //spin
+    	  while(System.currentTimeMillis() < time + 250) {}
       }
       else if(in_choice) { 
     	  choiceMSG();
@@ -222,7 +227,9 @@ public class Drop extends ApplicationAdapter {
            if(message.contains("battle"))
            {
          	 in_combat = true;
+         	 iter++;
          	 message = "";
+         	 //curBattle = new Battle(playerclass);
            }
            else if(message.contains("choice"))
            {
@@ -239,6 +246,11 @@ public class Drop extends ApplicationAdapter {
    
    public String combatMSG() {
 	   message = "MOVES (enter 1,2,3):\n\nATTACK  " + playerclass.getSkill1Name() + "  " + playerclass.getSkill2Name();
+	   return message;
+   }
+   
+   public String clashMSG(String s) {
+	   message = s;
 	   return message;
    }
    
