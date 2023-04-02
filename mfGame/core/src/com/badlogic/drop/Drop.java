@@ -194,7 +194,7 @@ public class Drop extends ApplicationAdapter {
     		  updateMSG();
     	  }
     	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
-    		  this.playerclass = new CompSciMageor(10,10);
+    		  this.playerclass = new OpenSourceBanbit(10,10);
     		  System.out.print("Class Changed");
     		  in_choice = false;
     		  updateMSG();
