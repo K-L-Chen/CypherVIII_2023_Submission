@@ -105,7 +105,7 @@ public class Battle {
     		}
 	    }
 	}
-	public Battler EnemyAction(Battler curEnemy) {
+	public ArrayList<Battler> EnemyAction(Battler curEnemy) {
 		int randomAction = rand.nextInt(3);
 		ArrayList<Battler> current = new ArrayList<Battler>();
 		switch(randomAction) 
@@ -115,19 +115,19 @@ public class Battle {
 			curEnemy.attack(player);
 			current.add(player);
 			current.add(curEnemy);
-			return player;
+			return current;
 		case 1:
 			curEnemy.skill1(player);
 			current.add(player);
 			current.add(curEnemy);
-			return player;
+			return current;
 		case 2:
 			curEnemy.skill2(player);
 			current.add(player);
 			current.add(curEnemy);
-			return player;
+			return current;
 		}
-		return player;
+		return current;
 	}
 	
 	// Main method for testing purposes
