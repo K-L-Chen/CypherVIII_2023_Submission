@@ -54,14 +54,14 @@ public class OpenSourceBanbit extends Battler {
 	@Override
 	public String getSkill1Name()
 	{
-		return "Go-N-Back 10MP";
+		return "Go-N-Back";
 		
 	}
 	
 	@Override
 	public String getSkill2Name()
 	{
-		return "Multi-Threaded Strike 20MP";
+		return "Multi-Threaded Strike";
 		
 	}
 }

@@ -55,14 +55,14 @@ public class CompSciMageor extends Battler {
 	@Override
 	public String getSkill1Name()
 	{
-		return "Healing Potion (Raw caffeine) 10MP";
+		return "Healing Potion (Raw caffeine)";
 		
 	}
 	
 	@Override
 	public String getSkill2Name()
 	{
-		return "Hack'em 20MP";
+		return "Hack'em";
 		
 	}
 }
