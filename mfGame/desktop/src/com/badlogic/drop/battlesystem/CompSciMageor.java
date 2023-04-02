@@ -15,7 +15,7 @@ public class CompSciMageor extends Battler {
 			totalmult = 0.1;
 		}
 		Other.curHp = (int) (Other.curHp - (10*totalmult));
-		if(Other.curHp < 0)
+		if(Other.curHp <= 0)
 		{
 			Other.isDefeated = true;
 		}

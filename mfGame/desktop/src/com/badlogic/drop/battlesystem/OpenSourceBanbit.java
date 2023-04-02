@@ -30,7 +30,7 @@ public class OpenSourceBanbit extends Battler {
 		}
 		Other.curHp = (int) (Other.curHp - (10*totalmult));
 		Other.defenceMult = Other.defenceMult/1.5;
-		if(Other.curHp < 0)
+		if(Other.curHp <= 0)
 		{
 			Other.isDefeated = true;
 		}
@@ -45,7 +45,7 @@ public class OpenSourceBanbit extends Battler {
 		}
 		Other.curHp = (int) (Other.curHp - 3*(10*totalmult));
 		Other.defenceMult = Other.defenceMult/1.5;
-		if(Other.curHp < 0)
+		if(Other.curHp <= 0)
 		{
 			Other.isDefeated = true;
 		}

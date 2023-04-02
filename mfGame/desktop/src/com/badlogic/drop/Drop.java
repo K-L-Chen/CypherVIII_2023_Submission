@@ -87,6 +87,10 @@ public class Drop extends ApplicationAdapter {
    private int iter = 0;
    private Battle curBattle;
    private ArrayList<Battler> entities;
+   private Battler FirstEnemy = null;
+   private Battler Secondenemy1 = null;
+   private Battler Secondenemy2 = null;
+   private Battler reslife = new MechaResLife(100,50);
    
    private boolean player_isDead = false;
    
@@ -187,23 +191,29 @@ public class Drop extends ApplicationAdapter {
     	  //spin
     	  while(System.currentTimeMillis() < time + 250) {}
       }
-      else if(in_combat) {
+      else if(in_combat) 
+      {
     	  //setup combat sequence thing
     	  combatMSG();
     	  //win combat sequence for debugging
-    	  if(iter == 3) {
+    	  if(iter == 3) 
+    	  {
     		  backgroundTexture = robot;
     	  }
-    	  if(player_isDead) {
+    	  if(player_isDead) 
+    	  {
 			  System.out.println("You died! Press a button to exit (crash)");
 			  message = "You died! Click to exit (crash)";
 			  //crash the game lmfao
-			  if(Gdx.input.isTouched()) {
+			  if(Gdx.input.isTouched()) 
+			  {
 				  throw new ArithmeticException();
 			  }
 		  }
-    	  else {
-	    	  if(Gdx.input.isKeyPressed(Keys.L)) {
+    	  else 
+    	  {
+	    	  if(Gdx.input.isKeyPressed(Keys.L)) 
+	    	  {
 	    		  in_combat = false;
 	    		  updateMSG();
 	    	  }
@@ -224,21 +234,43 @@ public class Drop extends ApplicationAdapter {
 	    	  //while one player and one enemy are alive
 	    	  //	continue battle
 	    	  //
-	    	  int action = 1;
+	    	  int action = 0;
 	    	  
-	    	  if(Gdx.input.isKeyPressed(Keys.NUM_1)) {
+	    	  while (action == 0)
+	    	  {
+	    	  if(Gdx.input.isKeyPressed(Keys.NUM_1)) 
+	    	  {
 	    		  action = 1;
 	    	  }
-	    	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) {
+	    	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) 
+	    	  {
 	    		  action = 2;
 	    	  }
-	    	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) {
+	    	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) 
+	    	  {
 	    		  action = 3;
 	    	  }
+	    	  }
 	    	  
-	    	  if(Gdx.input.isKeyPressed(Keys.NUM_2) && iter == 2) {
-				  entities = curBattle.getPlayerAction(action, 2);
-				  for(int i = 1; i < entities.size(); i++) {
+	    	  if(iter == 2) 
+	    	  {
+	    		  TargetMessage();
+		    	  int target = 0;
+		    	  
+		    	  while (target == 0)
+		    	  {
+		    		  if(Gdx.input.isKeyPressed(Keys.NUM_1)) 
+		    		  {
+		    			  target = 1;
+		    		  }
+		    		  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) 
+		    		  {
+		    			  target = 2;
+		    		  }
+		    	  }
+				  entities = curBattle.getPlayerAction(action, target);
+				  for(int i = 1; i < entities.size(); i++) 
+				  {
 					  if(!entities.get(i).isDefeated()) {
 						  entities = curBattle.EnemyAction(entities.get(i));
 					  }
@@ -247,23 +279,45 @@ public class Drop extends ApplicationAdapter {
 	//    			  boolean e1_isDead = false;
 	//    			  boolean e2_isDead = false;
 				  playerclass = entities.get(0);
-				  player_isDead = playerclass.curHp <= 0;
+				  player_isDead = playerclass.isDefeated();
 				  for(int i = 0; i < entities.size(); i++) {
 					  entities.get(i).debug();
 				  }
-				  boolean e1_isDead = entities.get(1).curHp <= 0;
-				  boolean e2_isDead = entities.get(2).curHp <= 0;
+				  Secondenemy1 = entities.get(1);
+				  Secondenemy2 = entities.get(2);
+				  boolean e1_isDead = entities.get(1).isDefeated();
+				  boolean e2_isDead = entities.get(2).isDefeated();
 				  
-				  curBattle.enemy.isDefeated = e1_isDead;
-				  curBattle.enemy2.isDefeated = e2_isDead;
+				  //curBattle.enemy.isDefeated = e1_isDead;
+				  //curBattle.enemy2.isDefeated = e2_isDead;
 				  
-				  if(e1_isDead && e2_isDead) {
+				  if(e1_isDead && e2_isDead) 
+				  {
 					  in_combat = false;
 				  }
+				  
+				  if(!e1_isDead && !e2_isDead)
+				  {
+					  TwoEnemyHp(Secondenemy1.curHp, Secondenemy2.curHp);
+				  }
+				  else if(!e1_isDead && e2_isDead)
+				  {
+					  EnemyHp(Secondenemy2.curHp);
+				  }
+				  else
+				  {
+					  EnemyHp(Secondenemy1.curHp);
+				  }
+		    	  long time = System.currentTimeMillis();
+		    	  //spin
+		    	  while(System.currentTimeMillis() < time + 250) {}
+				  
 			  }
-			  else if(Gdx.input.isKeyPressed(Keys.NUM_1)){
+			  else
+			  {
 				  entities = curBattle.getPlayerAction(action, 0);
-				  if(!entities.get(1).isDefeated()) {
+				  if(!entities.get(1).isDefeated()) 
+				  {
 					  entities = curBattle.EnemyAction(entities.get(1));
 				  }
 				  
@@ -272,13 +326,35 @@ public class Drop extends ApplicationAdapter {
 				  }
 				  
 				  playerclass = entities.get(0);
-				  player_isDead = playerclass.curHp <= 0;
+				  if(iter == 1)
+				  {
+					  FirstEnemy = entities.get(1);
+				  }
+				  else if(iter == 3)
+				  {
+					  reslife = entities.get(1);
+				  }
+				  
+				  player_isDead = playerclass.isDefeated();
 				  boolean e1_isDead = entities.get(1).curHp <= 0;
 				  
 				  curBattle.enemy.isDefeated = e1_isDead;
-				  if(e1_isDead) {
+				  if(e1_isDead) 
+				  {
 					  in_combat = false;
 				  }
+				  
+				  if(iter == 1)
+				  {
+					  EnemyHp(FirstEnemy.curHp);
+				  }
+				  else if(iter == 3)
+				  {
+					  EnemyHp(reslife.curHp);
+				  }
+		    	  long time = System.currentTimeMillis();
+		    	  //spin
+		    	  while(System.currentTimeMillis() < time + 250) {}
 			  }
 	    	  
 	    	  long time = System.currentTimeMillis();
@@ -306,9 +382,6 @@ public class Drop extends ApplicationAdapter {
     		  in_choice = false;
     		  updateMSG();
     	  }
-    	  long time = System.currentTimeMillis();
-    	  //spin
-    	  while(System.currentTimeMillis() < time + 250) {}
       }
       
 	   
@@ -347,53 +420,52 @@ public class Drop extends ApplicationAdapter {
          	 	case 1:
          	 		System.out.println("First fight.");
          	 		int type = (int)(Math.random() * 3 + 1);
-         	 		Battler enemy = null;
+         	 		FirstEnemy = null;
          	 		switch(type) {
          	 			case 1:
-         	 				enemy = new KeyboardWarrior(10,50);
+         	 				FirstEnemy = new KeyboardWarrior(10,50);
          	 				break;
          	 			case 2:
-         	 				enemy = new CompSciMageor(10,50);
+         	 				FirstEnemy = new CompSciMageor(10,50);
          	 				break;
          	 			case 3:
-         	 				enemy = new OpenSourceBanbit(10,50);
+         	 				FirstEnemy = new OpenSourceBanbit(10,50);
          	 				break;
          	 		}
-         	 		curBattle = new Battle(playerclass, iter, enemy);
+         	 		curBattle = new Battle(playerclass, iter, FirstEnemy);
          	 		break;
          	 	case 2:
          	 		System.out.println("Second fight.");
          	 		int type1 = (int)(Math.random() * 3 + 1);
-         	 		Battler enemy1 = null;
+         	 		Battler Secondenemy1 = null;
          	 		switch(type1) {
 	         	 		case 1:
-	     	 				enemy1 = new KeyboardWarrior(10,50);
+	         	 			Secondenemy1 = new KeyboardWarrior(10,50);
 	     	 				break;
 	     	 			case 2:
-	     	 				enemy1 = new CompSciMageor(10,50);
+	     	 				Secondenemy1 = new CompSciMageor(10,50);
 	     	 				break;
 	     	 			case 3:
-	     	 				enemy1 = new OpenSourceBanbit(10,50);
+	     	 				Secondenemy1 = new OpenSourceBanbit(10,50);
 	     	 				break;
          	 		}
          	 		type1 = (int)(Math.random() * 3 + 1);
-         	 		Battler enemy2 = null;
+         	 		Battler Secondenemy2 = null;
          	 		switch(type1) {
 	         	 		case 1:
-	     	 				enemy2 = new KeyboardWarrior(10,50);
+	         	 			Secondenemy2 = new KeyboardWarrior(10,50);
 	     	 				break;
 	     	 			case 2:
-	     	 				enemy2 = new CompSciMageor(10,50);
+	     	 				Secondenemy2 = new CompSciMageor(10,50);
 	     	 				break;
 	     	 			case 3:
-	     	 				enemy2 = new OpenSourceBanbit(10,50);
+	     	 				Secondenemy2 = new OpenSourceBanbit(10,50);
 	     	 				break;
          	 		}
-         	 		curBattle = new Battle(playerclass, iter, enemy1, enemy2);
+         	 		curBattle = new Battle(playerclass, iter, Secondenemy1, Secondenemy2);
          	 		break;
          	 	case 3:
          	 		System.out.println("Boss fight.");
-         	 		Battler reslife = new MechaResLife(100,50);
          	 		curBattle = new Battle(playerclass, iter, reslife);
          	 		break;
          	 }
@@ -420,7 +492,22 @@ public class Drop extends ApplicationAdapter {
 	   message = s;
 	   return message;
    }
+   public String TargetMessage()
+   {
+	   message = "Choose a Target (enter 1 or 2):\n1:Waitlisted Student #1 \n2:Waitlisted Student #2\n";
+	   return message;
+   }
    
+   public String EnemyHp(int hp1)
+   {
+	   message = "The enemy has " + hp1 + "HP left.";
+	   return message;
+   }
+   public String TwoEnemyHp(int hp1,int hp2)
+   {
+	   message = "The first enemy has " + hp1 + "HP left.\n The second enemy has "+ hp2 + "HP";
+	   return message;
+   }
    public String choiceMSG() {
 	   message = "Choose a Class (enter 1,2,3):\n1:KeyboardWarrior 3:OpenSourceBanBit\n2:CompSciMageor\n";
 	   return message;
