@@ -24,8 +24,9 @@ public class Battle {
 		this.enemy = Enemy;
 		this.enemy = Enemy2;
 	}
-	public Battler getPlayerAction(int action, int target) 
+	public ArrayList<Battler> getPlayerAction(int action, int target) 
 	{
+		ArrayList<Battler> current = new ArrayList<Battler>();
 	    if(battlenum == 2)
 	    {
 	    	if(target == 1)
@@ -33,17 +34,23 @@ public class Battle {
 	    		if(action == 1)
 	    		{
 	    			player.attack(enemy);
-	    			return enemy;
+	    			current.add(player);
+	    			current.add(enemy);
+	    			return current;
 	    		}
 	    		else if(action == 2)
 	    		{
 	    			player.skill1(enemy);
-	    			return enemy;
+	    			current.add(player);
+	    			current.add(enemy);
+	    			return current;
 	    		}
 	    		else
 	    		{
 	    			player.skill2(enemy);
-	    			return enemy;
+	    			current.add(player);
+	    			current.add(enemy);
+	    			return current;
 	    		}
 	    			
 	    	}
@@ -52,17 +59,23 @@ public class Battle {
 	    		if(action == 1)
 	    		{
 	    			player.attack(enemy2);
-	    			return enemy;
+	    			current.add(player);
+	    			current.add(enemy2);
+	    			return current;
 	    		}
 	    		else if(action == 2)
 	    		{
 	    			player.skill1(enemy2);
-	    			return enemy;
+	    			current.add(player);
+	    			current.add(enemy2);
+	    			return current;
 	    		}
 	    		else
 	    		{
 	    			player.skill2(enemy2);
-	    			return enemy;
+	    			current.add(player);
+	    			current.add(enemy2);
+	    			return current;
 	    		}
 	    			
 	    	}
@@ -72,33 +85,46 @@ public class Battle {
     		if(action == 1)
     		{
     			player.attack(enemy);
-    			return enemy;
+    			current.add(player);
+    			current.add(enemy);
+    			return current;
     		}
     		else if(action == 2)
     		{
     			player.skill1(enemy);
-    			return enemy;
+    			current.add(player);
+    			current.add(enemy);
+    			return current;
     		}
     		else
     		{
     			player.skill2(enemy);
-    			return enemy;
+    			current.add(player);
+    			current.add(enemy);
+    			return current;
     		}
 	    }
 	}
 	public Battler EnemyAction(Battler curEnemy) {
 		int randomAction = rand.nextInt(3);
+		ArrayList<Battler> current = new ArrayList<Battler>();
 		switch(randomAction) 
 		{
 			
 		case 0:
 			curEnemy.attack(player);
+			current.add(player);
+			current.add(curEnemy);
 			return player;
 		case 1:
 			curEnemy.skill1(player);
+			current.add(player);
+			current.add(curEnemy);
 			return player;
 		case 2:
 			curEnemy.skill2(player);
+			current.add(player);
+			current.add(curEnemy);
 			return player;
 		}
 		return player;
