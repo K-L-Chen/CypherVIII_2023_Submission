@@ -93,7 +93,8 @@ public class Drop extends ApplicationAdapter {
    private Battler reslife = new MechaResLife(100,50);
    
    private boolean player_isDead = false;
-   
+   private boolean action_select = false;
+   private boolean target_select = false;
    public void renderBackground() {
        backgroundSprite.draw(spriteBatch);
    }
@@ -236,127 +237,138 @@ public class Drop extends ApplicationAdapter {
 	    	  //
 	    	  int action = 0;
 	    	  
-	    	  while (action == 0)
+	    	  if(!action_select)
 	    	  {
-	    	  if(Gdx.input.isKeyPressed(Keys.NUM_1)) 
-	    	  {
-	    		  action = 1;
-	    	  }
-	    	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) 
-	    	  {
-	    		  action = 2;
-	    	  }
-	    	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) 
-	    	  {
-	    		  action = 3;
-	    	  }
-	    	  }
-	    	  
-	    	  if(iter == 2) 
-	    	  {
-	    		  TargetMessage();
-		    	  int target = 0;
-		    	  
-		    	  while (target == 0)
+		    	  if(Gdx.input.isKeyPressed(Keys.NUM_1)) 
 		    	  {
-		    		  if(Gdx.input.isKeyPressed(Keys.NUM_1)) 
-		    		  {
-		    			  target = 1;
-		    		  }
-		    		  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) 
-		    		  {
-		    			  target = 2;
-		    		  }
+		    		  action = 1;
+		    		  action_select = true;
 		    	  }
-				  entities = curBattle.getPlayerAction(action, target);
-				  for(int i = 1; i < entities.size(); i++) 
-				  {
-					  if(!entities.get(i).isDefeated()) {
-						  entities = curBattle.EnemyAction(entities.get(i));
-					  }
-				  }
-	//    			  boolean player_isDead = false;
-	//    			  boolean e1_isDead = false;
-	//    			  boolean e2_isDead = false;
-				  playerclass = entities.get(0);
-				  player_isDead = playerclass.isDefeated();
-				  for(int i = 0; i < entities.size(); i++) {
-					  entities.get(i).debug();
-				  }
-				  Secondenemy1 = entities.get(1);
-				  Secondenemy2 = entities.get(2);
-				  boolean e1_isDead = entities.get(1).isDefeated();
-				  boolean e2_isDead = entities.get(2).isDefeated();
-				  
-				  //curBattle.enemy.isDefeated = e1_isDead;
-				  //curBattle.enemy2.isDefeated = e2_isDead;
-				  
-				  if(e1_isDead && e2_isDead) 
-				  {
-					  in_combat = false;
-				  }
-				  
-				  if(!e1_isDead && !e2_isDead)
-				  {
-					  TwoEnemyHp(Secondenemy1.curHp, Secondenemy2.curHp);
-				  }
-				  else if(!e1_isDead && e2_isDead)
-				  {
-					  EnemyHp(Secondenemy2.curHp);
+		    	  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) 
+		    	  {
+		    		  action = 2;
+		    		  action_select = true;
+		    	  }
+		    	  else if(Gdx.input.isKeyPressed(Keys.NUM_3)) 
+		    	  {
+		    		  action = 3;
+		    		  action_select = true;
+		    	  }
+	    	  }
+	    	  else
+	    	  {
+		    	  if(iter == 2) 
+		    	  {
+		    		  TargetMessage();
+			    	  int target = 0;
+			    	  
+			    	  if (!target_select)
+			    	  {
+			    		  if(Gdx.input.isKeyPressed(Keys.NUM_1)) 
+			    		  {
+			    			  target = 1;
+			    			  target_select = false;
+			    		  }
+			    		  else if(Gdx.input.isKeyPressed(Keys.NUM_2)) 
+			    		  {
+			    			  target = 2;
+			    			  target_select = false;
+			    		  }
+			    	  }
+			    	  else
+			    	  {
+						  entities = curBattle.getPlayerAction(action, target);
+						  for(int i = 1; i < entities.size(); i++) 
+						  {
+							  if(!entities.get(i).isDefeated()) {
+								  entities = curBattle.EnemyAction(entities.get(i));
+							  }
+						  }
+						  
+						  playerclass = entities.get(0);
+						  player_isDead = playerclass.isDefeated();
+						  for(int i = 0; i < entities.size(); i++) {
+							  entities.get(i).debug();
+						  }
+						  Secondenemy1 = entities.get(1);
+						  Secondenemy2 = entities.get(2);
+						  boolean e1_isDead = entities.get(1).isDefeated();
+						  boolean e2_isDead = entities.get(2).isDefeated();
+						  
+						  //curBattle.enemy.isDefeated = e1_isDead;
+						  //curBattle.enemy2.isDefeated = e2_isDead;
+						  
+						  if(e1_isDead && e2_isDead) 
+						  {
+							  in_combat = false;
+						  }
+						  
+						  if(!e1_isDead && !e2_isDead)
+						  {
+							  TwoEnemyHp(Secondenemy1.curHp, Secondenemy2.curHp);
+						  }
+						  else if(!e1_isDead && e2_isDead)
+						  {
+							  EnemyHp(Secondenemy2.curHp);
+						  }
+						  else
+						  {
+							  EnemyHp(Secondenemy1.curHp);
+						  }
+						  
+						  action_select = false;
+						  target_select = false;
+				    	  long time = System.currentTimeMillis();
+				    	  //spin
+				    	  while(System.currentTimeMillis() < time + 250) {}
+			    	  }
+					  
 				  }
 				  else
 				  {
-					  EnemyHp(Secondenemy1.curHp);
+					  entities = curBattle.getPlayerAction(action, 0);
+					  if(!entities.get(1).isDefeated()) 
+					  {
+						  entities = curBattle.EnemyAction(entities.get(1));
+					  }
+					  
+					  for(int i = 0; i < entities.size(); i++) {
+						  entities.get(i).debug();
+					  }
+					  
+					  playerclass = entities.get(0);
+					  if(iter == 1)
+					  {
+						  FirstEnemy = entities.get(1);
+					  }
+					  else if(iter == 3)
+					  {
+						  reslife = entities.get(1);
+					  }
+					  
+					  player_isDead = playerclass.isDefeated();
+					  boolean e1_isDead = entities.get(1).curHp <= 0;
+					  
+					  curBattle.enemy.isDefeated = e1_isDead;
+					  if(e1_isDead) 
+					  {
+						  in_combat = false;
+					  }
+					  
+					  if(iter == 1)
+					  {
+						  EnemyHp(FirstEnemy.curHp);
+					  }
+					  else if(iter == 3)
+					  {
+						  EnemyHp(reslife.curHp);
+					  }
+					  action_select = false;
+			    	  long time = System.currentTimeMillis();
+			    	  //spin
+			    	  while(System.currentTimeMillis() < time + 250) {}
 				  }
-		    	  long time = System.currentTimeMillis();
-		    	  //spin
-		    	  while(System.currentTimeMillis() < time + 250) {}
-				  
-			  }
-			  else
-			  {
-				  entities = curBattle.getPlayerAction(action, 0);
-				  if(!entities.get(1).isDefeated()) 
-				  {
-					  entities = curBattle.EnemyAction(entities.get(1));
-				  }
-				  
-				  for(int i = 0; i < entities.size(); i++) {
-					  entities.get(i).debug();
-				  }
-				  
-				  playerclass = entities.get(0);
-				  if(iter == 1)
-				  {
-					  FirstEnemy = entities.get(1);
-				  }
-				  else if(iter == 3)
-				  {
-					  reslife = entities.get(1);
-				  }
-				  
-				  player_isDead = playerclass.isDefeated();
-				  boolean e1_isDead = entities.get(1).curHp <= 0;
-				  
-				  curBattle.enemy.isDefeated = e1_isDead;
-				  if(e1_isDead) 
-				  {
-					  in_combat = false;
-				  }
-				  
-				  if(iter == 1)
-				  {
-					  EnemyHp(FirstEnemy.curHp);
-				  }
-				  else if(iter == 3)
-				  {
-					  EnemyHp(reslife.curHp);
-				  }
-		    	  long time = System.currentTimeMillis();
-		    	  //spin
-		    	  while(System.currentTimeMillis() < time + 250) {}
-			  }
-	    	  
+	    	  }
 	    	  long time = System.currentTimeMillis();
 	    	  //spin
 	    	  while(System.currentTimeMillis() < time + 250) {}
