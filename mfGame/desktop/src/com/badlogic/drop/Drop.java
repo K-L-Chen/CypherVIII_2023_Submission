@@ -261,7 +261,7 @@ public class Drop extends ApplicationAdapter {
 					  in_combat = false;
 				  }
 			  }
-			  else {
+			  else if(Gdx.input.isKeyPressed(Keys.NUM_1)){
 				  entities = curBattle.getPlayerAction(action, 0);
 				  if(!entities.get(1).isDefeated()) {
 					  entities = curBattle.EnemyAction(entities.get(1));
